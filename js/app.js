@@ -24,7 +24,7 @@ console.log("Tayo-na!-Let's play!")
 //flipCard
 //easyTimer
 //mediumTimer
-//hardTimer
+//difficultTimer
 //resetGame
 
 /*----- functions -----*/
