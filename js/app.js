@@ -1,6 +1,6 @@
 console.log("Tayo-na!-Let's play!")
 /*----- constants -----*/
-const cardArray = [
+const cardArray = 
     {
         name: 'jeepney 1',
         img: 
