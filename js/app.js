@@ -23,17 +23,17 @@ const cardArray = [
 
     {
         name: 'jeepney 5',
-        //img: https://imgur.com/WBwd68J
+        img: 'https://imgur.com/WBwd68J'
     },
 
     {
         name: 'jeepney 6',
-        //img: https://imgur.com/zMWYILX
+        img: 'https://imgur.com/zMWYILX'
     },
 
     {
         name: 'jeepney 7',
-        //img: https://imgur.com/z8c8iVY
+        img: 'https://imgur.com/z8c8iVY'
 
     },
 
