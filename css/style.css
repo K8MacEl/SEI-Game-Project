@@ -1,5 +1,14 @@
-body {
+html, body {
+    height: 100 vh;
+    margin: 0;
     font-family: Verdana;
     background-color: blue;
     color: yellow;
+}
+
+* {
+    box-sizing: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
