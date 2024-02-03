@@ -1,64 +1,68 @@
 console.log("Tayo-na!-Let's play!")
 /*----- constants -----*/
-const cardArray = 
+const cardArray = [
     {
         name: 'jeepney 1',
-        img: https://imgur.com/JrCsl4n
+        //img: "https://imgur.com/JrCsl4n"
     },
+    
+    {
     name: 'jeepney 2',
-    img: https://imgur.com/Kxm0slg
+    // img: https://imgur.com/Kxm0slg
+    },
+    
     {
         name: 'jeepney 3',
-        img: https://imgur.com/tahpPts
+        //img: https://imgur.com/tahpPts
     },
 
     {
         name: 'jeepney 4',
-        img: https://imgur.com/pajwPtQ
+        //img: https://imgur.com/pajwPtQ
     },
 
     {
         name: 'jeepney 5',
-        img: https://imgur.com/WBwd68J
+        //img: https://imgur.com/WBwd68J
     },
 
     {
         name: 'jeepney 6',
-        img: https://imgur.com/zMWYILX
+        //img: https://imgur.com/zMWYILX
     },
 
     {
         name: 'jeepney 7',
-        img: https://imgur.com/z8c8iVY
+        //img: https://imgur.com/z8c8iVY
 
     },
 
     {
         name: 'jeepney 8',
-        img: https://imgur.com/6XidTHu
+        //img: https://imgur.com/6XidTHu
 
     },
 
     {
         name: 'jeepney 9',
-        img: https://imgur.com/JVqFyGN
+        //img: https://imgur.com/JVqFyGN
 
     },
 
     {
         name: 'jeepney 10',
-        img: https://imgur.com/DtIxuNW
+        //img: https://imgur.com/DtIxuNW
 
     },
 
     {
         name: 'jeepney 11',
-        img: https://imgur.com/SPaQFFu
+        //img: https://imgur.com/SPaQFFu
     },
 
     {
         name: 'jeepney 12',
-        img: https://imgur.com/a/GV6BpXv
+        //img: https://imgur.com/a/GV6BpXv
     },
 
 ]
@@ -86,6 +90,29 @@ const cardArray =
 //resetGame
 
 /*----- functions -----*/
+ //generate and array of random jeepneys then through the array 
+    // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
+    const shuffle = function shuffle(cardArray) {
+        let counter = cardArray.length, t, i;
+          
+    //while there remain elements to shuffle
+        while (counter) {
+            //pick a remaining element
+            i = Math.floor(Math.random() * counter--);
+    
+            //and swap it with the current element
+            t = cardArray[counter];
+            cardArray[counter] = cardArray[i];
+            cardArray[i] = t;
+        }
+        return cardArray;
+    }
+
+
+
+
+
+
 //flipCard
 //disableCard (when matched)
 //checkForMatch
