@@ -3,62 +3,62 @@ console.log("Tayo-na!-Let's play!")
 const cardArray = 
     {
         name: 'jeepney 1',
-        img: 
+        img: https://imgur.com/JrCsl4n
     },
     name: 'jeepney 2',
-    img:
+    img: https://imgur.com/Kxm0slg
     {
         name: 'jeepney 3',
-        img:
+        img: https://imgur.com/tahpPts
     },
 
     {
         name: 'jeepney 4',
-        img:
+        img: https://imgur.com/pajwPtQ
     },
 
     {
         name: 'jeepney 5',
-        img:
+        img: https://imgur.com/WBwd68J
     },
 
     {
         name: 'jeepney 6',
-        img:
+        img: https://imgur.com/zMWYILX
     },
 
     {
         name: 'jeepney 7',
-        img:
+        img: https://imgur.com/z8c8iVY
 
     },
 
     {
         name: 'jeepney 8',
-        img:
+        img: https://imgur.com/6XidTHu
 
     },
 
     {
         name: 'jeepney 9',
-        img:
+        img: https://imgur.com/JVqFyGN
 
     },
 
     {
         name: 'jeepney 10',
-        img:
+        img: https://imgur.com/DtIxuNW
 
     },
 
     {
         name: 'jeepney 11',
-        img:
+        img: https://imgur.com/SPaQFFu
     },
 
     {
         name: 'jeepney 12',
-        img:
+        img: https://imgur.com/a/GV6BpXv
     },
 
 ]
