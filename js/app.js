@@ -3,22 +3,22 @@ console.log("Tayo-na!-Let's play!")
 const cardArray = [
     {
         name: 'jeepney 1',
-        //img: "https://imgur.com/JrCsl4n"
+        img: 'https://imgur.com/JrCsl4n'
     },
-    
+
     {
     name: 'jeepney 2',
-    // img: https://imgur.com/Kxm0slg
+        img: 'https://imgur.com/Kxm0slg'
     },
     
     {
         name: 'jeepney 3',
-        //img: https://imgur.com/tahpPts
+        img: 'https://imgur.com/tahpPts'
     },
 
     {
         name: 'jeepney 4',
-        //img: https://imgur.com/pajwPtQ
+        img: 'https://imgur.com/pajwPtQ'
     },
 
     {
@@ -39,35 +39,96 @@ const cardArray = [
 
     {
         name: 'jeepney 8',
-        //img: https://imgur.com/6XidTHu
+        img: 'https://imgur.com/6XidTHu'
 
     },
 
     {
         name: 'jeepney 9',
-        //img: https://imgur.com/JVqFyGN
+        img: 'https://imgur.com/JVqFyGN'
 
     },
 
     {
         name: 'jeepney 10',
-        //img: https://imgur.com/DtIxuNW
+        img: 'https://imgur.com/DtIxuNW'
 
     },
 
     {
         name: 'jeepney 11',
-        //img: https://imgur.com/SPaQFFu
+        img: 'https://imgur.com/SPaQFFu'
     },
 
     {
         name: 'jeepney 12',
-        //img: https://imgur.com/a/GV6BpXv
+        img: 'https://imgur.com/a/GV6BpXv'
     },
 
 ]
 
+const gameBoard = document.querySelector('.game-board');
+const available = document.querySelector('#available');
+const modalTitle = document.querySelector('#modal-title');
+const modal = document.querySelector('#modal');
+let currentCards = [...cardArray, ...cardArray];
+let isPaused = false;
+let counter = cardArray.length + 10;
+let isLose = false;
+
+
+//generate and array of random jeepneys then through the array 
+   // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
+   const shuffle = function shuffle(cardArray) {
+       let counter = cardArray.length, t, i;
+         
+   //while there remain elements to shuffle
+       while (counter) {
+           //pick a remaining element
+           i = Math.floor(Math.random() * counter--);
+   
+           //and swap it with the current element
+           t = cardArray[counter];
+           cardArray[counter] = cardArray[i];
+           cardArray[i] = t;
+       }
+       return cardArray;
+   }
 /*----- app's state (variables) -----*/
+function win(){
+    isPaused = true;
+    modalTitle.innerHTML = 'Well done, you win';
+    modal.classList.add('modal--open');
+}
+
+function lose() {
+    isLose = true;
+    modalTitle.innerHTML = 'Too bad, you lose.';
+    modal.classList.add('modal--open');
+  }
+
+function handleClick(event) {
+    //put event listner for handleclick here
+}
+
+function drawCards(){
+    gameBoard.innerHTML = ''; //clears existing cards
+    available.innerHTML = counter;
+
+    shuffle(currentCards).forEach((el, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.setAttribute('data-id', index);
+        card.innerHTML = el.name;
+    
+    card.addEventListener('click',handleClick);
+    gameBoard.appendChild(card);
+    });
+}
+
+drawCards();
+
+
 
 //let hasFlippedCard 
 //let firstCard, secondCard...
@@ -90,25 +151,14 @@ const cardArray = [
 //resetGame
 
 /*----- functions -----*/
- //generate and array of random jeepneys then through the array 
-    // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
-    const shuffle = function shuffle(cardArray) {
-        let counter = cardArray.length, t, i;
-          
-    //while there remain elements to shuffle
-        while (counter) {
-            //pick a remaining element
-            i = Math.floor(Math.random() * counter--);
-    
-            //and swap it with the current element
-            t = cardArray[counter];
-            cardArray[counter] = cardArray[i];
-            cardArray[i] = t;
-        }
-        return cardArray;
-    }
 
 
+    //get cards on the board using DOM Element innerHTML
+      
+ 
+
+
+  
 
 
 

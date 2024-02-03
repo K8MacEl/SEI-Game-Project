@@ -8,19 +8,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class ="container">
-            <div class="title"><h1>Jeep-Mory</h1></div>
-            <div class="backrgound"><p>The most common means of public transportation in the Philippines is the Jeepney. Jeepneys are a symbol of Filipino culture and throughout the country you can ride in decorated Jeepneys of all styles and designs. . Play Jeep Me-Mory to practice your memorization skills while seeing some of the amazing Jeepneys of the Philippine Islands! </p></div>
-            <div class="play"> <strong>To Play: </strong>Press the “Play Now” button and then 24 cards will appear face down. Of those 24 cards, there are 12 sets of pairs and it your job to turn over the matching sets in less than 48 moves. To increase difficultly activate the stop watch feature. </div>
-            <div class="tayo"><h2>Tayo na (let's go)!</h2></div>    
-            <div class="cards"></div>
-        <nav>
-            <div><button id="play">Play game!</button></div>
-            <div><button id="reset">Reset-game!</button></div>
-            <div class="game status"><h3>Game Status</h3>/div>
-            <div id="matches">Matches-Made:</div>
+    <main class ="content">
+        <header class="header">
+            <h1 class="title">Jeep-Mory</h1>
+            <!-- <div class="backrgound"><p>The most common means of public transportation in the Philippines is the Jeepney. Jeepneys are a symbol of Filipino culture and throughout the country you can ride in decorated Jeepneys of all styles and designs. . Play Jeep Me-Mory to practice your memorization skills while seeing some of the amazing Jeepneys of the Philippine Islands! </p></div> -->
+            <!-- <div class="play"> <strong>To Play: </strong>Press the “Play Now” button and then 24 cards will appear face down. Of those 24 cards, there are 12 sets of pairs and it your job to turn over the matching sets in less than 48 moves. To increase difficultly activate the stop watch feature. </div>
+            <div class="tayo"><h2>Tayo na (let's go)!</h2></div>     -->
+            <div class="movement">
+                <h6 class="subtitle">Movements</h6>
+                <div class="available" id="available"></div>
+              </div>
+        </header>
+        <section class="game-board"></section>
+            <div class="'cards"></div>
+            <div class="modal" id="modal">
+                <div class="modal-container">
+                  <h3 class="modal-title" id="modal-title">You win!</h3>
+                  <button type="button" class="button" id="play-again">Play Again</button>
+                </div>
+              </div>  
+            <!-- <div id="matches">Matches-Made:</div>
             <div id="moves-used">Moves-Used:</div>
-            <div class="moves-remaining">Moves-Remaning</div>
+            <div class="available">Moves-Remaning</div>
             <div class="stop-watch-activation"><h3>StopwatchActiviation<h3></div>
             <div><button id="stopwatch-easy">Easy (10 minutes)</button></div>
             <div><button id="stopwatch-medium">Medium (8 minutes)</button></div>
@@ -28,4 +37,4 @@
         </nav>      
     </div>
 </body>   
-</html>
+</html> -->
