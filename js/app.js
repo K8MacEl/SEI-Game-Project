@@ -3,66 +3,66 @@ console.log("Tayo-na!-Let's play!")
 const cardArray = [
     {
         name: 'jeepney 1',
-        img: 'https://imgur.com/JrCsl4n'
+        //img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/1 Jeepney.png"
     },
 
     {
         name: 'jeepney 2',
-        img: 'https://imgur.com/Kxm0slg'
+        //img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/2 Jeepney.png"
     },
     
     {
         name: 'jeepney 3',
-        img: 'https://imgur.com/tahpPts'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/3 Jeepney.png"
     },
 
     {
         name: 'jeepney 4',
-        img: 'https://imgur.com/pajwPtQ'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/4 Jeepney.png"
     },
 
     {
         name: 'jeepney 5',
-        img: 'https://imgur.com/WBwd68J'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/5 Jeepney.png"
     },
 
     {
         name: 'jeepney 6',
-        img: 'https://imgur.com/zMWYILX'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/6 Jeepney.png"
     },
 
     {
         name: 'jeepney 7',
-        img: 'https://imgur.com/z8c8iVY'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/7 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 8',
-        img: 'https://imgur.com/6XidTHu'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/8 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 9',
-        img: 'https://imgur.com/JVqFyGN'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/9 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 10',
-        img: 'https://imgur.com/DtIxuNW'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/10 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 11',
-        img: 'https://imgur.com/SPaQFFu'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/11 Jeepney.png"
     },
 
     {
         name: 'jeepney 12',
-        img: 'https://imgur.com/a/GV6BpXv'
+        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/12 Jeepney.png"
     },
 
 ]
@@ -95,19 +95,9 @@ let isLose = false;
        return cardArray;
    }
 /*----- app's state (variables) -----*/
-function win(){
-    isPaused = true;
-    modalTitle.innerHTML = 'Well done, you win';
-    modal.classList.add('modal--open');
-}
 
-function lose() {
-    isLose = true;
-    modalTitle.innerHTML = 'Too bad, you lose.';
-    modal.classList.add('modal--open');
-  }
 
-//event listener to set game
+//event listener to reset game
 document.getElementById('reset').addEventListener('click', function(){
     drawCards(); // Call the drawCards() function when the "Reset" button is clicked
 });
@@ -140,8 +130,14 @@ function drawCards(){
 
 drawCards();
 
+//flipCard
+const cards = document.querySelectorAll('.card');
 
+function flipCard(){
+    this.classList.toggle('flip');
+}
 
+cards.forEach(card => card.addEventListener('click', flipCard));
 
 //let hasFlippedCard 
 //let firstCard, secondCard...
@@ -161,26 +157,9 @@ drawCards();
 //easyTimer
 //mediumTimer
 //hardTimer
-//resetGame
-
-
-        //reset player and computer choices
-  
 
 /*----- functions -----*/
 
-
-    //get cards on the board using DOM Element innerHTML
-      
- 
-
-
-  
-
-
-
-
-//flipCard
 //disableCard (when matched)
 //checkForMatch
 //unflipCard (when two unmacthed cards are flipped)
