@@ -3,66 +3,66 @@ console.log("Tayo-na!-Let's play!")
 const cardArray = [
     {
         name: 'jeepney 1',
-        //img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/1 Jeepney.png"
+        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/1 Jeepney.png"
     },
 
     {
         name: 'jeepney 2',
-        //img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/2 Jeepney.png"
+        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/2 Jeepney.png"
     },
     
     {
         name: 'jeepney 3',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/3 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/3 Jeepney.png"
     },
 
     {
         name: 'jeepney 4',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/4 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/4 Jeepney.png"
     },
 
     {
         name: 'jeepney 5',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/5 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/5 Jeepney.png"
     },
 
     {
         name: 'jeepney 6',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/6 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/6 Jeepney.png"
     },
 
     {
         name: 'jeepney 7',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/7 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/7 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 8',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/8 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/8 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 9',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/9 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/9 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 10',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/10 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/10 Jeepney.png"
 
     },
 
     {
         name: 'jeepney 11',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/11 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/11 Jeepney.png"
     },
 
     {
         name: 'jeepney 12',
-        //img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/12 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/12 Jeepney.png"
     },
 
 ]
