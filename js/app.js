@@ -7,7 +7,7 @@ const cardArray = [
     },
 
     {
-    name: 'jeepney 2',
+        name: 'jeepney 2',
         img: 'https://imgur.com/Kxm0slg'
     },
     

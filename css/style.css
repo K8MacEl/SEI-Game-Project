@@ -76,6 +76,9 @@ body {
 }
 
 .card {
+  font-size: x-large;
+  color: yellow;
+  text-align: center;
   background-color: blue;
   border: 1rem solid yellow;
   border-radius: .25rem;
@@ -115,6 +118,7 @@ body {
 .card__front {
   flex-direction: column;
   transform: rotateY(-180deg);
+  
 }
 
 .card__back {
@@ -125,6 +129,7 @@ body {
 .front__img {
   margin-bottom: 0.5rem;
   width: 7rem;
+  
 }
 
 .back__img {
