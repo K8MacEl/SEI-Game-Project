@@ -107,8 +107,16 @@ function lose() {
     modal.classList.add('modal--open');
   }
 
+//event listener to set game
+document.getElementById('reset').addEventListener('click', function(){
+    drawCards(); // Call the drawCards() function when the "Reset" button is clicked
+});
+
 function handleClick(event) {
-    //put event listner for handleclick here
+    const clickedCard = event.target;
+    if(clickedCard.classList.contains('card')){
+        console.log('Card clicked:', clickedCard);
+    }
 }
 
 function drawCards(){
@@ -119,14 +127,19 @@ function drawCards(){
         const card = document.createElement('div');
         card.className = 'card';
         card.setAttribute('data-id', index);
-        card.innerHTML = el.name;
-    
+        //creating image for each card
+        const img = document.createElement('img');
+        img.src = el.img; //set image source laid out in cardArray
+        img.alt = el.name; //set the alt text
+        card.appendChild(img);//append image to card element
+     
     card.addEventListener('click',handleClick);
     gameBoard.appendChild(card);
     });
 }
 
 drawCards();
+
 
 
 
@@ -149,6 +162,10 @@ drawCards();
 //mediumTimer
 //hardTimer
 //resetGame
+
+
+        //reset player and computer choices
+  
 
 /*----- functions -----*/
 
