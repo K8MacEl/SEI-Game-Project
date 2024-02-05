@@ -8,7 +8,7 @@
   
   body {
     height: 100 vh;
-    overflow: hideen;
+    overflow: hidden;
     background: linear-gradient (45deg, blue, yellow);
     padding: 1rem;
   } 
@@ -48,44 +48,45 @@
   
   .card {
     text-align: center;
-    border: 20px solid color blue;
+    border: 20px solid blue;
     position: relative;
     transform: flip;
     transition: transform 500ms ease-in-out;
-    width: 100px;
-    height: 150px;
     perspective: 1000px; 
     cursor: pointer;
+    width: 100px;
+    height: 150px;
   }
+
+  .card img {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 100px;
+    height: auto;
+    border: 20px solid pink;
+  }
+
   .card .card-inner {
-    width: 100%;
-    height: 100%;
     transition: transform 0.5s; /* Add transition effect for smooth flipping */
     transform-style: preserve-3d;
 }
 
 .card-front, .card-back {
     position: absolute; 
-    width: 100%;
-    height: 100%;
     backface-visibility: hidden; 
 }
 
 .card .card-front {
-    z-index: 2 /*this will put the front face on top */
+    z-index: 2; /*this will put the front face on top */
     position: absolute; /* Position the front and back faces absolutely */
-    width: 100%;
-    height: 100%;
     backface-visibility: hidden; /* Hide the back face by default */
 }
 
 .card .card-back {
     /* CSS styles for the back face of the card */
     z-index: 1; /*this should put the back behind the front */
-    transform: flip(180deg); /* Initially rotate the back face 180 degrees */
+    transform: rotateY(180deg); /* Initially rotate the back face 180 degrees */
     position: absolute; /* Position the front and back faces absolutely */
-    width: 100%;
-    height: 100%;
     backface-visibility: hidden; /* Hide the back face by default */
     background-color: black;
 }
@@ -93,7 +94,7 @@
 
 
   .card:hover {
-    transform: flip(180deg);
+    transform: rotateY(180deg);
   } 
   
 
@@ -106,7 +107,7 @@
   .reset {
     background-color: red;
     border: 0.15rem solid green;
-    color: black
+    color: black;
     /* cursor: pointer; */
     font-size: 1.1rem;
     font-weight: 600;

@@ -2,49 +2,49 @@ console.log("Tayo-na!-Let's play!")
 /*----- constants -----*/
 const cardArray = [
     {
-        name: 'jeepney 1',
-        img: src = "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
+        jeep: 'jeepney 1',
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
     },
 
     {
-        name: 'jeepney 2',
-        img: src = "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
+        jeep: 'jeepney 2',
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
     },
 
     {
-        name: 'jeepney 3',
+        jeep: 'jeepney 3',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png"
     },
 
     {
-        name: 'jeepney 4',
+        jeep: 'jeepney 4',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png"
     },
 
     {
-        name: 'jeepney 5',
+        jeep: 'jeepney 5',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png"
     },
 
     {
-        name: 'jeepney 6',
+        jeep: 'jeepney 6',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 6.png"
     },
 
     {
-        name: 'jeepney 7',
+        jeep: 'jeepney 7',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 7.png"
 
     },
 
     {
-        name: 'jeepney 8',
+        jeep: 'jeepney 8',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png"
 
     },
 
     {
-        name: 'jeepney 9',
+        jeep: 'jeepney 9',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png"
 
     },
@@ -56,18 +56,19 @@ const cardArray = [
     },
 
     {
-        name: 'jeepney 11',
+        jeep: 'jeepney 11',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png"
     },
 
     {
-        name: 'jeepney 12',
+        jeep: 'jeepney 12',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png"
     },
 
 ]
 //sets the game board with the array
 const gameBoard = document.querySelector('.game-board');
+gameBoard.addEventListener('click', handleClick);
 //all unmatched cards
 const availableCards = document.querySelector('#available-cards');
 //shows avaialble cards in array
@@ -109,20 +110,14 @@ function drawCards() {
     availableCards.innerHTML = counter;
 
     shuffle(currentCards).forEach((el, index) => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        //creating image for each card
-        card.setAttribute('data-id', index);
         const img = document.createElement('img');
-        //set image source laid out in cardArray
+        //adding image to image source
         img.src = el.img;
         //set the alt text
         img.alt = el.name;
         //append image to card element
-        card.appendChild(img);
-
-        card.addEventListener('click', handleClick);
-        gameBoard.appendChild(card);
+        //taking the game board and appending child with img
+        gameBoard.appendChild(img);
     });
 }
 
@@ -137,10 +132,12 @@ document.getElementById('reset').addEventListener('click', function () {
 
 //player selects card
 function handleClick(event) {
+    console.log("click is working")
     //prevents additional clicks while checking
     if (!isChecking) {
         const clickedCard = event.target;
-        if (clickedCard.classList.contains('card') && selectedCards.length < 2 && !selectedCards.includes(clickedCard)) {
+        console.log(clickedCard)
+        if (selectedCards.length < 2 && !selectedCards.includes(clickedCard)) {
             //check if clicked card is a valid card
             console.log('Card clicked:', clickedCard);
             //push clicked card in array
@@ -154,42 +151,45 @@ function handleClick(event) {
                 //delay check for better visability (!!look this up more!!)
                 setTimeout(checkMatch, 1000); 
             }
+
         }
     }
 }
-//checks for match
-function checkMatch() {
-    const [card1, card2] = selectedCards;
-    const img1 = card1.querySelector('img').src;
-    const img2 = card2.querySelector('img').src;
-    if (img1 === img2) {
-        //freeze cards if matched
-        console.log('Match!');
-        selectedCards.forEach(card => card.classList.remove('flipped'))
-        selectedCards = [];
-    }
-    //cards are not match and allow user to keep selecting that card
-    isChecking = false; 
-}
+
+    //checks for match
+//     function checkMatch() {
+//         const [card1, card2] = selectedCards;
+//         const jeep1 = jeep1.querySelector('jeep').cardArray
+//         const jeep2 = jeep2.querySelector('jeep').cardArray
+//         if (jeep1 === jeep2) {
+//             //freeze cards if matched
+//             console.log('Match!');
+//             selectedCards.forEach(card => card.classList.remove('flipped'))
+//             selectedCards = [];
+//         }
+//         //cards are not match and allow user to keep selecting that card
+//         isChecking = false; 
+//     }
+
 
 
 
 
 // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
 //
-const cards = document.querySelectorAll('.card');
-// // //instead of a flip card function maybe a function that has a render function for cards so when flip card is rendered the front shows
-//event listener to allow user to select cards
-cards.forEach(card => {card.addEventListener('click', flipCard);
+// const cards = document.querySelectorAll('.card');
+// // // //instead of a flip card function maybe a function that has a render function for cards so when flip card is rendered the front shows
+// //event listener to allow user to select cards
+// // cards.forEach(card => {card.addEventListener('click', flipCard);
 
-});
+// });
 
-function flipCard() {
-    //using flipped will help but check css for flipped
-    this.classList.toggle('flipped');
-}
+// function flipCard() {
+//     //using flipped will help but check css for flipped
+//     this.classList.toggle('flipped');
+// }
 
-
+// console.log(flipCard())
 
 
 
