@@ -3,66 +3,66 @@ console.log("Tayo-na!-Let's play!")
 const cardArray = [
     {
         name: 'jeepney 1',
-        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/1 Jeepney.png"
+        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
     },
 
     {
         name: 'jeepney 2',
-        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/2 Jeepney.png"
+        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
     },
     
     {
         name: 'jeepney 3',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/3 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png"
     },
 
     {
         name: 'jeepney 4',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/4 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png"
     },
 
     {
         name: 'jeepney 5',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/5 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png"
     },
 
     {
         name: 'jeepney 6',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/6 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 6.png"
     },
 
     {
         name: 'jeepney 7',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/7 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 7.png"
 
     },
 
     {
         name: 'jeepney 8',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/8 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png"
 
     },
 
     {
         name: 'jeepney 9',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/9 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png"
 
     },
 
     {
         name: 'jeepney 10',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/10 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png"
 
     },
 
     {
         name: 'jeepney 11',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/11 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png"
     },
 
     {
         name: 'jeepney 12',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/12 Jeepney.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png"
     },
 
 ]
@@ -132,13 +132,16 @@ drawCards();
 
 //flipCard
 const cards = document.querySelectorAll('.card');
-
+//instead of a flip card function maybe a function that has a render function for cards so when flip card is rendered the front shows
 function flipCard(){
     this.classList.toggle('flip');
+    console.log(this)
+    this.textContent = "Back of Card"
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
-
+//use card node list to tell the card node list
+console.log(cards[3])
 //let hasFlippedCard 
 //let firstCard, secondCard...
 //let matchesMade
