@@ -58,12 +58,11 @@
     height: 150px;
   }
 
-  .card img {
+  img {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    width: 100px;
+    grid-template-columns:  10px;
+    width: 200px;
     height: auto;
-    border: 20px solid pink;
   }
 
   .card .card-inner {
