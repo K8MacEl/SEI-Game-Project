@@ -3,14 +3,14 @@ console.log("Tayo-na!-Let's play!")
 const cardArray = [
     {
         name: 'jeepney 1',
-        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
+        img: src = "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
     },
 
     {
         name: 'jeepney 2',
-        img: src="/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
+        img: src = "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
     },
-    
+
     {
         name: 'jeepney 3',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png"
@@ -66,110 +66,160 @@ const cardArray = [
     },
 
 ]
-
+//sets the game board with the array
 const gameBoard = document.querySelector('.game-board');
-const available = document.querySelector('#available');
-const modalTitle = document.querySelector('#modal-title');
-const modal = document.querySelector('#modal');
+//all unmatched cards
+const availableCards = document.querySelector('#available-cards');
+//shows avaialble cards in array
 let currentCards = [...cardArray, ...cardArray];
-let isPaused = false;
-let counter = cardArray.length + 10;
-let isLose = false;
+//counts moves
+let counter = cardArray.length + 20;
+// const drawCards
+let cardsChosen = []
+//flag to prevemt player from double selecting same card
+let isChecking = false;
+//array to store current cards 
+let selectedCards = [];
 
 
+//---------------1. Initiate game:------------------>
+//------------SHUFFLE CARDS IN ARRAY---------------->
 //generate and array of random jeepneys then through the array 
-   // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
-   const shuffle = function shuffle(cardArray) {
-       let counter = cardArray.length, t, i;
-         
-   //while there remain elements to shuffle
-       while (counter) {
-           //pick a remaining element
-           i = Math.floor(Math.random() * counter--);
-   
-           //and swap it with the current element
-           t = cardArray[counter];
-           cardArray[counter] = cardArray[i];
-           cardArray[i] = t;
-       }
-       return cardArray;
-   }
-/*----- app's state (variables) -----*/
+// Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
+const shuffle = function shuffle(cardArray) {
+    let counter = cardArray.length, t, i;
 
+    //while there remain elements to shuffle
+    while (counter) {
+        //pick a remaining element
+        i = Math.floor(Math.random() * counter--);
 
-//event listener to reset game
-document.getElementById('reset').addEventListener('click', function(){
-    drawCards(); // Call the drawCards() function when the "Reset" button is clicked
-});
-
-function handleClick(event) {
-    const clickedCard = event.target;
-    if(clickedCard.classList.contains('card')){
-        console.log('Card clicked:', clickedCard);
+        //and swap it with the current element
+        t = cardArray[counter];
+        cardArray[counter] = cardArray[i];
+        cardArray[i] = t;
     }
+    return cardArray;
 }
 
-function drawCards(){
-    gameBoard.innerHTML = ''; //clears existing cards
-    available.innerHTML = counter;
+//-------------Make the game board-------------------->
+function drawCards() {
+    //clears existing cards
+    gameBoard.innerHTML = '';
+    availableCards.innerHTML = counter;
 
     shuffle(currentCards).forEach((el, index) => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.setAttribute('data-id', index);
         //creating image for each card
+        card.setAttribute('data-id', index);
         const img = document.createElement('img');
-        img.src = el.img; //set image source laid out in cardArray
-        img.alt = el.name; //set the alt text
-        card.appendChild(img);//append image to card element
-     
-    card.addEventListener('click',handleClick);
-    gameBoard.appendChild(card);
+        //set image source laid out in cardArray
+        img.src = el.img;
+        //set the alt text
+        img.alt = el.name;
+        //append image to card element
+        card.appendChild(img);
+
+        card.addEventListener('click', handleClick);
+        gameBoard.appendChild(card);
     });
 }
 
 drawCards();
+/*----- app's state (variables) -----*/
 
-//flipCard
-const cards = document.querySelectorAll('.card');
-//instead of a flip card function maybe a function that has a render function for cards so when flip card is rendered the front shows
-function flipCard(){
-    this.classList.toggle('flip');
-    console.log(this)
-    this.textContent = "Back of Card"
+
+//event listener to reset game
+// Call the drawCards() function when the "Reset" button is clicked
+document.getElementById('reset').addEventListener('click', function () {
+});
+
+//player selects card
+function handleClick(event) {
+    //prevents additional clicks while checking
+    if (!isChecking) {
+        const clickedCard = event.target;
+        if (clickedCard.classList.contains('card') && selectedCards.length < 2 && !selectedCards.includes(clickedCard)) {
+            //check if clicked card is a valid card
+            console.log('Card clicked:', clickedCard);
+            //push clicked card in array
+            selectedCards.push(clickedCard);
+            //flipped clicked card
+            clickedCard.classList.add('flipped');
+            //once two cards are clicked initiates checking for match
+            if (selectedCards.length === 2) {
+                //disallows additional clicks
+                isChecking = true; 
+                //delay check for better visability (!!look this up more!!)
+                setTimeout(checkMatch, 1000); 
+            }
+        }
+    }
+}
+//checks for match
+function checkMatch() {
+    const [card1, card2] = selectedCards;
+    const img1 = card1.querySelector('img').src;
+    const img2 = card2.querySelector('img').src;
+    if (img1 === img2) {
+        //freeze cards if matched
+        console.log('Match!');
+        selectedCards.forEach(card => card.classList.remove('flipped'))
+        selectedCards = [];
+    }
+    //cards are not match and allow user to keep selecting that card
+    isChecking = false; 
 }
 
-cards.forEach(card => card.addEventListener('click', flipCard));
+
+
+
+// //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
+//
+const cards = document.querySelectorAll('.card');
+// // //instead of a flip card function maybe a function that has a render function for cards so when flip card is rendered the front shows
+//event listener to allow user to select cards
+cards.forEach(card => {card.addEventListener('click', flipCard);
+
+});
+
+function flipCard() {
+    //using flipped will help but check css for flipped
+    this.classList.toggle('flipped');
+}
+
+
+
+
+
+
+//checkForMatches
+
+
+
+//disableCard (when matched)
+//unflipCard (when two unmacthed cards are flipped)
 //use card node list to tell the card node list
-console.log(cards[3])
 //let hasFlippedCard 
 //let firstCard, secondCard...
 //let matchesMade
-//let movesUsed
-//let movesRemaining (48-movesUsed)
-//let win
-//let lose
+
+
 
 /*----- cached element references -----*/
 //firstCardPicked
 //secondCardPicked
 
 /*----- event listeners -----*/
-//playGame
-//flipCard
-//easyTimer
-//mediumTimer
-//hardTimer
+
 
 /*----- functions -----*/
 
-//disableCard (when matched)
-//checkForMatch
-//unflipCard (when two unmacthed cards are flipped)
-//shuffleCards (activated at play game and reset)
-//timerEasy (icebox features)
-//timerMedium (icebox features)
-//timerHard(icebox features)
-//timesUp (icebox features)
-//noMoreTurns (when turns =48)
-//celebrateWinner (when all 12 pairs matched)
+/*-------ice box items-----*/
+//Easy option of only 4 pairs
+//Medium option of only 8 pairs)
+//Hard option of all 12 pairs
+//stop timer
+//guess counter
+//celebrateWinner (when all pairs matched)
