@@ -1,4 +1,4 @@
-console.log("Tayo-na!-Let's play!")
+
 /*----- constants -----*/
 const cardArray = [
     {
@@ -66,9 +66,9 @@ const cardArray = [
     },
 
 ]
-//sets the game board with the array
+//Set the game board with the array
 const gameBoard = document.querySelector('.game-board');
-//event listener for game
+//Event listener for game
 gameBoard.addEventListener('click', handleClick);
 const cards = document.querySelectorAll('.card');
 //all unmatched cards
@@ -113,7 +113,7 @@ let selectedCards = [];
         return cardArray;
     }
     
-    //-------------Make the game board-------------------->
+    //-------------MAKE THE GAME BOARD------------------->
     function drawCards() {
         //clears existing cards
         gameBoard.innerHTML = '';
@@ -135,7 +135,7 @@ let selectedCards = [];
     }
     drawCards();
 
-    //-------start the game--------->
+//--------START THE GAME----------------------->
     function startGame() {
     
         console.log("Tayo-na! Let's play!");
@@ -144,7 +144,7 @@ let selectedCards = [];
     
     startGame();
 
-//player selects card
+//---------PLAYER SELECTS MATCHES------------->
 function handleClick(event) {
     if (!event.target.alt || isChecking) return;
 
@@ -184,14 +184,13 @@ function handleClick(event) {
     }
 }
 
-    //event listener to reset game
+//----------RESET GAME--------------------.
 // Call the drawCards() function when the "Reset" button is clicked
 document.getElementById('reset').addEventListener('click', function () {
     drawCards();
 });
     
-    //store cardsChosen in another object
-    //then take and wrap it that into a bigger loop
+
 
 
 //Javascript feature to rotate cards back
@@ -201,55 +200,6 @@ document.getElementById('reset').addEventListener('click', function () {
         //     firstPick = null;
         // },500)
     
-   
-
-
-
-//next decide the existing array
-  
-
-   
-    //prevents additional clicks while checking
-    // if (!isChecking) {
-    //     const clickedCard = event.target;
-    //     console.log(clickedCard)
-    //         //check if clicked card is a valid card
-    //         console.log('Card clicked:', clickedCard);
-    //         //push clicked card into clickedCard array
-    //         selectedCards.push(clickedCard);
-    //         //flipped clicked card
-    //         clickedCard.classList.add('flipped');
-    //         //once two cards are clicked initiates checking for match
-    //         if (selectedCards.length === 2) {
-    //             //disallows additional clicks
-    //             isChecking = true;
-    //         }
-    //     }
-    // }
-
-//checks for match
-// function checkMatch() {
-//     const [card1, card2] = selectedCards;
-//     const img1 = card1.getAttribute('src')
-//     const img2 = card2.getAttribute('src')
-//     if (img1 === img2) {
-//         //freeze cards if matched
-//         console.log('Match!');
-//         selectedCards.forEach(card => card.classList.remove('flipped'))
-//         selectedCards = [];
-//     } else {
-
-//         //setTimeout is a function in JavaScript used to schedule a task after a delay
-//         setTimeout(() => {
-//             selectedCards.forEach(card => card.classList.remove('flipped'));
-//             selectedCards = []
-//             //cards are not match and allow user to keep selecting that card
-//             isChecking = false;
-//         }, 1000);
-//     }
-// }
-
-
 // // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
 // function flipCard() {
 // // //     //using flipped will help but check css for flipped
@@ -257,19 +207,8 @@ document.getElementById('reset').addEventListener('click', function () {
 // }
 
 //unflipCard (when two unmacthed cards are flipped)
-//use card node list to tell the card node list
 //let hasFlippedCard 
-//let firstCard, secondCard...
-//let matchesMade
 
-
-
-/*----- cached element references -----*/
-
-/*----- event listeners -----*/
-
-
-/*----- functions -----*/
 
 /*-------ice box items-----*/
 //Easy option of only 4 pairs
