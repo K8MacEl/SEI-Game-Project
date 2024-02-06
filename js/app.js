@@ -3,66 +3,66 @@
 const cardArray = [
     {
         jeep: 'jeepney 1',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
+        img: "Images/Jeepney 1.png"
     },
 
     {
         jeep: 'jeepney 2',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
+        img: "Images/Jeepney 2.png"
     },
 
     {
         jeep: 'jeepney 3',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png"
+        img: "Images/Jeepney 3.png"
     },
 
     {
         jeep: 'jeepney 4',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png"
+        img: "Images/Jeepney 4.png"
     },
 
     {
         jeep: 'jeepney 5',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png"
+        img: "Images/Jeepney 5.png"
     },
 
     {
         jeep: 'jeepney 6',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 6.png"
+        img: "Images/Jeepney 6.png"
     },
 
     {
         jeep: 'jeepney 7',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 7.png"
+        img: "Images/Jeepney 7.png"
 
     },
 
     {
         jeep: 'jeepney 8',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png"
+        img: "Images/Jeepney 8.png"
 
     },
 
     {
         jeep: 'jeepney 9',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png"
+        img: "Jeepney 9.png"
 
     },
 
     {
         jeep: 'jeepney 10',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png"
+        img: "Images/Jeepney 10.png"
 
     },
 
     {
         jeep: 'jeepney 11',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png"
+        img: "Images/Jeepney 11.png"
     },
 
     {
         jeep: 'jeepney 12',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png"
+        img: "Images/Jeepney 12.png"
     },
 
 ]
