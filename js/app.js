@@ -50,7 +50,7 @@ const cardArray = [
     },
 
     {
-        name: 'jeepney 10',
+        jeep: 'jeepney 10',
         img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png"
 
     },
@@ -68,7 +68,9 @@ const cardArray = [
 ]
 //sets the game board with the array
 const gameBoard = document.querySelector('.game-board');
+//event listener for game
 gameBoard.addEventListener('click', handleClick);
+const cards = document.querySelectorAll('.card');
 //all unmatched cards
 const availableCards = document.querySelector('#available-cards');
 //shows avaialble cards in array
@@ -114,7 +116,8 @@ function drawCards() {
         //adding image to image source
         img.src = el.img;
         //set the alt text
-        img.alt = el.name;
+        img.alt = el.jeep;
+        img.id = index;
         //append image to card element
         //taking the game board and appending child with img
         gameBoard.appendChild(img);
@@ -132,73 +135,79 @@ document.getElementById('reset').addEventListener('click', function () {
 
 //player selects card
 function handleClick(event) {
-    console.log("click is working")
-    //prevents additional clicks while checking
-    if (!isChecking) {
-        const clickedCard = event.target;
-        console.log(clickedCard)
-        if (selectedCards.length < 2 && !selectedCards.includes(clickedCard)) {
-            //check if clicked card is a valid card
-            console.log('Card clicked:', clickedCard);
-            //push clicked card in array
-            selectedCards.push(clickedCard);
-            //flipped clicked card
-            clickedCard.classList.add('flipped');
-            //once two cards are clicked initiates checking for match
-            if (selectedCards.length === 2) {
-                //disallows additional clicks
-                isChecking = true; 
-                //delay check for better visability (!!look this up more!!)
-                setTimeout(checkMatch, 1000); 
-            }
+    if (!event.target.alt) return
+    const cardName = event.target.alt
+    const cardId = event.target.id
+    //this is where information is tracked
+    const cardSelection = { name: cardName, id: cardId }
+    const isDoubleClick = selectedCards.find(function (card) {
+        return card.id === cardId
+    })
+    if (isDoubleClick) return
+    console.log('valid click')
+    if (selectedCards.length >= 2) return
 
-        }
+    selectedCards.push(cardSelection)
+
+
+    if (selectedCards.length === 2) {
+
+        const isMatch = selectedCards[0].name === selectedCards[1].name
+        console.log(isMatch)
     }
 }
 
-    //checks for match
-//     function checkMatch() {
-//         const [card1, card2] = selectedCards;
-//         const jeep1 = jeep1.querySelector('jeep').cardArray
-//         const jeep2 = jeep2.querySelector('jeep').cardArray
-//         if (jeep1 === jeep2) {
-//             //freeze cards if matched
-//             console.log('Match!');
-//             selectedCards.forEach(card => card.classList.remove('flipped'))
-//             selectedCards = [];
-//         }
-//         //cards are not match and allow user to keep selecting that card
-//         isChecking = false; 
+//next decide the existing array
+  
+
+   
+    //prevents additional clicks while checking
+    // if (!isChecking) {
+    //     const clickedCard = event.target;
+    //     console.log(clickedCard)
+    //         //check if clicked card is a valid card
+    //         console.log('Card clicked:', clickedCard);
+    //         //push clicked card into clickedCard array
+    //         selectedCards.push(clickedCard);
+    //         //flipped clicked card
+    //         clickedCard.classList.add('flipped');
+    //         //once two cards are clicked initiates checking for match
+    //         if (selectedCards.length === 2) {
+    //             //disallows additional clicks
+    //             isChecking = true;
+    //         }
+    //     }
+    // }
+
+//checks for match
+// function checkMatch() {
+//     const [card1, card2] = selectedCards;
+//     const img1 = card1.getAttribute('src')
+//     const img2 = card2.getAttribute('src')
+//     if (img1 === img2) {
+//         //freeze cards if matched
+//         console.log('Match!');
+//         selectedCards.forEach(card => card.classList.remove('flipped'))
+//         selectedCards = [];
+//     } else {
+
+//         //setTimeout is a function in JavaScript used to schedule a task after a delay
+//         setTimeout(() => {
+//             selectedCards.forEach(card => card.classList.remove('flipped'));
+//             selectedCards = []
+//             //cards are not match and allow user to keep selecting that card
+//             isChecking = false;
+//         }, 1000);
 //     }
-
-
-
+// }
 
 
 // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
-//
-// const cards = document.querySelectorAll('.card');
-// // // //instead of a flip card function maybe a function that has a render function for cards so when flip card is rendered the front shows
-// //event listener to allow user to select cards
-// // cards.forEach(card => {card.addEventListener('click', flipCard);
-
-// });
-
 // function flipCard() {
-//     //using flipped will help but check css for flipped
-//     this.classList.toggle('flipped');
+// //     //using flipped will help but check css for flipped
+// this.classList.toggle('flipped');
 // }
 
-// console.log(flipCard())
-
-
-
-
-//checkForMatches
-
-
-
-//disableCard (when matched)
 //unflipCard (when two unmacthed cards are flipped)
 //use card node list to tell the card node list
 //let hasFlippedCard 
@@ -208,8 +217,6 @@ function handleClick(event) {
 
 
 /*----- cached element references -----*/
-//firstCardPicked
-//secondCardPicked
 
 /*----- event listeners -----*/
 
