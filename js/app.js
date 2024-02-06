@@ -45,7 +45,7 @@ const cardArray = [
 
     {
         jeep: 'jeepney 9',
-        img: "Jeepney 9.png"
+        img: "Images/Jeepney 9.png"
 
     },
 

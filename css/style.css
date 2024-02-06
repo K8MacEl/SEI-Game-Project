@@ -73,7 +73,7 @@
     transform-style: preserve-3d;
 }
 
-.card-front, .card-back {
+img > .card-front, .card-back {
     backface-visibility: hidden; 
 }
 
