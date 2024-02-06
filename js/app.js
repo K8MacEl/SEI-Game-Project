@@ -83,89 +83,85 @@ let cardsChosen = []
 let isChecking = false;
 //array to store current cards 
 let selectedCards = [];
-//------------SHUFFLE CARDS IN ARRAY---------------->
+
+
 //front and back of card elements--NOT FUNCTIONING
 // const getFrontandBackFromCard = (card) => {
-//     const front = card.querySelector(',card-front');
-//     const back = card.querySelector(',card-back');
-//     return [front, back];
-// };
-
-//toogle the cards back and forth 
-
-//generate and array of random jeepneys then through the array 
-// Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
-const shuffle = function shuffle(cardArray) {
-    let counter = cardArray.length, t, i;
-
-    //while there remain elements to shuffle
-    while (counter) {
-        //pick a remaining element
-        i = Math.floor(Math.random() * counter--);
-
-        //and swap it with the current element
-        t = cardArray[counter];
-        cardArray[counter] = cardArray[i];
-        cardArray[i] = t;
+    //     const front = card.querySelector(',card-front');
+    //     const back = card.querySelector(',card-back');
+    //     return [front, back];
+    // };
+    
+    //toogle the cards back and forth 
+    
+    //------------SHUFFLE CARDS IN ARRAY---------------->
+    //generate and array of random jeepneys then through the array 
+    // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
+    const shuffle = function shuffle(cardArray) {
+        let counter = cardArray.length, t, i;
+        
+        //while there remain elements to shuffle
+        while (counter) {
+            //pick a remaining element
+            i = Math.floor(Math.random() * counter--);
+            
+            //and swap it with the current element
+            t = cardArray[counter];
+            cardArray[counter] = cardArray[i];
+            cardArray[i] = t;
+        }
+        return cardArray;
     }
-    return cardArray;
-}
-
-//-------------Make the game board-------------------->
-function drawCards() {
-    //clears existing cards
-    gameBoard.innerHTML = '';
-    availableCards.innerHTML = counter;
-
-    shuffle(currentCards).forEach((el, index) => {
-        const img = document.createElement('img');
-        //adding image to image source
-        img.src = el.img;
-        //set the alt text
-        img.alt = el.jeep;
-        img.id = index;
-        img.classList.add('card-front');
-        img.classList.add('card-back');
-        //append image to card element
-        //taking the game board and appending child with img
-        gameBoard.appendChild(img,'card-back');
-    });
-}
-drawCards();
-
-
-// const rotateElements = (elements) => {
-//     if (typeof elements !== "object" || !elements.length) return;
-//     elements.forEach((element) => element.classList.toggle("rotated"));
-//   };
-/*----- app's state (variables) -----*/
-
-
-//event listener to reset game
-// Call the drawCards() function when the "Reset" button is clicked
-document.getElementById('reset').addEventListener('click', function () {
+    
+    //-------------Make the game board-------------------->
+    function drawCards() {
+        //clears existing cards
+        gameBoard.innerHTML = '';
+        availableCards.innerHTML = counter;
+        
+        shuffle(currentCards).forEach((el, index) => {
+            const img = document.createElement('img');
+            //adding image to image source
+            img.src = el.img;
+            //set the alt text
+            img.alt = el.jeep;
+            img.id = index;
+            img.classList.add('card-front');
+            img.classList.add('card-back');
+            //append image to card element
+            //taking the game board and appending child with img
+            gameBoard.appendChild(img,'card-back');
+        });
+    }
     drawCards();
-});
+
+    //-------start the game--------->
+    function startGame() {
+    
+        console.log("Tayo-na! Let's play!");
+        drawCards();
+    }
+    
+    startGame();
 
 //player selects card
 function handleClick(event) {
-    if (!event.target.alt) return
-    const cardName = event.target.alt
-    const cardId = event.target.id
-    //const isMatch = selectedCards[0].name === selectedCards[1].name
+    if (!event.target.alt || isChecking) return;
+
+    const cardName = event.target.alt;
+    const cardId = event.target.id;
+
+    //check if card is already selected
+    const isDoubleClick = selectedCards.find(card => card.id === cardId);
+    if (isDoubleClick) return console.log('invalid click');
     //this is where information is tracked
     const cardSelected = { name: cardName, id: cardId }
-    const isDoubleClick = selectedCards.find(function (card) {
-        return card.id === cardId
-    })
-    if (isDoubleClick) return
-    console.log('valid click')
-    if (selectedCards.length >= 2) return                           
 
     selectedCards.push(cardSelected)
-
+    
     if (selectedCards.length === 2) {
-//move this out of the function
+        isChecking = true; //prevents further selections until check is completed
+                             
         const isMatch = selectedCards[0].name === selectedCards[1].name
         if (isMatch) {
             console.log('Match!');
@@ -176,12 +172,27 @@ function handleClick(event) {
                 }
             });
             console.log("Updated selectedCards array:",selectedCards); 
+            //check if all cards are chosen
+            if (cardsChosen.length === cardArray.length) {
+                console.log('Game over, all cards have been selected');
+            }
          } else {
             console.log('not a match');
          }
-      
+         selectedCards = [];
+         isChecking = false;
     }
 }
+
+    //event listener to reset game
+// Call the drawCards() function when the "Reset" button is clicked
+document.getElementById('reset').addEventListener('click', function () {
+    drawCards();
+});
+    
+    //store cardsChosen in another object
+    //then take and wrap it that into a bigger loop
+
 
 //Javascript feature to rotate cards back
         // setTimeout(() => {
