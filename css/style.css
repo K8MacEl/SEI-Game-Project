@@ -55,10 +55,12 @@
     cursor: pointer;
     width: 100px;
     height: 150px;
+    display: grid;
+  
   }
 
   img {
-    display: grid;
+   
     grid-template-columns:  10px;
     width: 200px;
     height: auto;
@@ -70,13 +72,11 @@
 }
 
 .card-front, .card-back {
-    position: absolute; 
     backface-visibility: hidden; 
 }
 
 .card .card-front {
     z-index: 2; /*this will put the front face on top */
-    position: absolute; /* Position the front and back faces absolutely */
     backface-visibility: hidden; /* Hide the back face by default */
 }
 

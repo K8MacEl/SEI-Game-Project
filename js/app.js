@@ -124,18 +124,20 @@ function drawCards() {
         //set the alt text
         img.alt = el.jeep;
         img.id = index;
+        img.classList.add('card-front');
+        img.classList.add('card-back');
         //append image to card element
         //taking the game board and appending child with img
-        gameBoard.appendChild(img);
+        gameBoard.appendChild(img,'card-back');
     });
 }
 drawCards();
 
 
-const rotateElements = (elements) => {
-    if (typeof elements !== "object" || !elements.length) return;
-    elements.forEach((element) => element.classList.toggle("rotated"));
-  };
+// const rotateElements = (elements) => {
+//     if (typeof elements !== "object" || !elements.length) return;
+//     elements.forEach((element) => element.classList.toggle("rotated"));
+//   };
 /*----- app's state (variables) -----*/
 
 
@@ -150,6 +152,7 @@ function handleClick(event) {
     if (!event.target.alt) return
     const cardName = event.target.alt
     const cardId = event.target.id
+    //const isMatch = selectedCards[0].name === selectedCards[1].name
     //this is where information is tracked
     const cardSelected = { name: cardName, id: cardId }
     const isDoubleClick = selectedCards.find(function (card) {
@@ -162,7 +165,7 @@ function handleClick(event) {
     selectedCards.push(cardSelected)
 
     if (selectedCards.length === 2) {
-
+//move this out of the function
         const isMatch = selectedCards[0].name === selectedCards[1].name
         if (isMatch) {
             console.log('Match!');
