@@ -83,10 +83,16 @@ let cardsChosen = []
 let isChecking = false;
 //array to store current cards 
 let selectedCards = [];
-
-
-//---------------1. Initiate game:------------------>
 //------------SHUFFLE CARDS IN ARRAY---------------->
+//front and back of card elements--NOT FUNCTIONING
+// const getFrontandBackFromCard = (card) => {
+//     const front = card.querySelector(',card-front');
+//     const back = card.querySelector(',card-back');
+//     return [front, back];
+// };
+
+//toogle the cards back and forth 
+
 //generate and array of random jeepneys then through the array 
 // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
 const shuffle = function shuffle(cardArray) {
@@ -123,14 +129,20 @@ function drawCards() {
         gameBoard.appendChild(img);
     });
 }
-
 drawCards();
+
+
+const rotateElements = (elements) => {
+    if (typeof elements !== "object" || !elements.length) return;
+    elements.forEach((element) => element.classList.toggle("rotated"));
+  };
 /*----- app's state (variables) -----*/
 
 
 //event listener to reset game
 // Call the drawCards() function when the "Reset" button is clicked
 document.getElementById('reset').addEventListener('click', function () {
+    drawCards();
 });
 
 //player selects card
@@ -139,23 +151,45 @@ function handleClick(event) {
     const cardName = event.target.alt
     const cardId = event.target.id
     //this is where information is tracked
-    const cardSelection = { name: cardName, id: cardId }
+    const cardSelected = { name: cardName, id: cardId }
     const isDoubleClick = selectedCards.find(function (card) {
         return card.id === cardId
     })
     if (isDoubleClick) return
     console.log('valid click')
-    if (selectedCards.length >= 2) return
+    if (selectedCards.length >= 2) return                           
 
-    selectedCards.push(cardSelection)
-
+    selectedCards.push(cardSelected)
 
     if (selectedCards.length === 2) {
 
         const isMatch = selectedCards[0].name === selectedCards[1].name
-        console.log(isMatch)
+        if (isMatch) {
+            console.log('Match!');
+            //push selected cards into array
+            selectedCards.forEach(card => {
+                if (!cardsChosen.includes(card)) {
+                    cardsChosen.push(card);
+                }
+            });
+            console.log("Updated selectedCards array:",selectedCards); 
+         } else {
+            console.log('not a match');
+         }
+      
     }
 }
+
+//Javascript feature to rotate cards back
+        // setTimeout(() => {
+        //     //define elements!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //     rotateElements([card-front, card-back, firstFront, firtsBack]);
+        //     firstPick = null;
+        // },500)
+    
+   
+
+
 
 //next decide the existing array
   
@@ -202,9 +236,9 @@ function handleClick(event) {
 // }
 
 
-// //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
+// // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
 // function flipCard() {
-// //     //using flipped will help but check css for flipped
+// // //     //using flipped will help but check css for flipped
 // this.classList.toggle('flipped');
 // }
 
