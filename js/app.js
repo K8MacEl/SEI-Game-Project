@@ -86,13 +86,24 @@ let selectedCards = [];
 
 
 //front and back of card elements--NOT FUNCTIONING
-// const getFrontandBackFromCard = (card) => {
-    //     const front = card.querySelector(',card-front');
-    //     const back = card.querySelector(',card-back');
-    //     return [front, back];
-    // };
+const getFrontandBackFromCard = (card) => {
+         const front = card.querySelector('.card-front');
+         const back = card.querySelector('.card-back');
+         return [front, back];
+     };
+
+     // // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
+document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', flipCard);
+});
     
-    //toogle the cards back and forth 
+
+
+function flipCard() {
+//using flipped will help but check css for flipped
+this.classList.toggle('flipped');
+}    
+//toogle the cards back and forth 
     
     //------------SHUFFLE CARDS IN ARRAY---------------->
     //generate and array of random jeepneys then through the array 
@@ -126,14 +137,14 @@ let selectedCards = [];
             //set the alt text
             img.alt = el.jeep;
             img.id = index;
-            img.classList.add('card-front');
-            img.classList.add('card-back');
+            img.classList.add('.card-front');
+            img.classList.add('.card-back');
             //append image to card element
             //taking the game board and appending child with img
             gameBoard.appendChild(img,'card-back');
         });
     }
-    drawCards();
+    drawCards('.card-back');
 
 //--------START THE GAME----------------------->
     function startGame() {
@@ -189,9 +200,6 @@ function handleClick(event) {
 document.getElementById('reset').addEventListener('click', function () {
     drawCards();
 });
-    
-
-
 
 //Javascript feature to rotate cards back
         // setTimeout(() => {
@@ -200,11 +208,7 @@ document.getElementById('reset').addEventListener('click', function () {
         //     firstPick = null;
         // },500)
     
-// // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
-// function flipCard() {
-// // //     //using flipped will help but check css for flipped
-// this.classList.toggle('flipped');
-// }
+
 
 //unflipCard (when two unmacthed cards are flipped)
 //let hasFlippedCard 

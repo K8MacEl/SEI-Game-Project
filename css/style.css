@@ -43,20 +43,10 @@
 
   .card.flipped {
     transform: rotateY(180deg);
-  }
+}
   
   .card {
-    text-align: center;
-    border: 20px solid blue;
-    position: relative;
-    transform: flip;
-    transition: transform 500ms ease-in-out;
-    perspective: 1000px; 
-    cursor: pointer;
-    width: 100px;
-    height: 150px;
-    display: grid;
-  
+    transition: transform 0.5s;
   }
 
   img {
@@ -75,9 +65,8 @@
     backface-visibility: hidden; 
 }
 
-.card .card-front {
+.card-front {
     z-index: 2; /*this will put the front face on top */
-    backface-visibility: hidden; /* Hide the back face by default */
 }
 
 .card .card-back {
@@ -88,16 +77,10 @@
     backface-visibility: hidden; /* Hide the back face by default */
     background-color: black;
 }
-
-
-
   .card:hover {
     transform: rotateY(180deg);
   } 
   
-
- 
- 
   .card img {
     width: 200px;
   }
@@ -113,25 +96,4 @@
     transition: all 270ms ease-in;
   }
   
-  
-  .handleclick {
-   
-  
-  } 
-  
-.modal--open {
-
-  }
-  
-  .modal-container {
-
-  }
-
-  .modal-title {
-
-  }
-  
-.button:hover{
-
-}
   
