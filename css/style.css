@@ -1,4 +1,3 @@
-  
   * {
     box-sizing: border-box;
     font-family: Arial;
@@ -6,14 +5,14 @@
     padding: 0;
     scroll-behavior: auto;
   }
-  
+
   body {
     height: 100 vh;
     overflow: scroll;
     padding: 2rem;
-    background-color: rgba(237,212,86);
-  } 
-    
+    background-color: rgba(237, 212, 86);
+  }
+
   .title {
     color: red;
     font-family: Arial;
@@ -24,86 +23,65 @@
     border: 20px solid blue;
     justify-content: center;
   }
-  
+
   .header {
     align-items: center;
     text-align: center;
     display: grid;
     justify-content: space-between;
     margin-bottom: 1rem;
-    
+
   }
 
   p {
     text-align: center;
-    color: rgba (32,83,174);
-    
+    color: rgba (32, 83, 174);
   }
-  
-   .movement {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    background-color: red;
-  } 
-  
+
   .game-board {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: auto auto auto auto;
   }
 
-  .card.flipped {
+  .flipped {
     transform: rotateY(180deg);
-}
-  
+    cursor: pointer;
+  }
+
   .card {
     transition: transform 0.5s;
+    backface-visibility: hidden;
   }
 
   img {
-   
-    grid-template-columns:  10px;
+    grid-template-columns: 10px;
     width: 200px;
     height: auto;
+    backface-visibility: hidden;
   }
 
-  .card .card-inner {
-    transition: transform 0.5s; /* Add transition effect for smooth flipping */
-    transform-style: preserve-3d;
-}
+  .card-front img{
+    z-index: 2;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+  }
 
-img > .card-front, .card-back {
-    backface-visibility: hidden; 
-}
+  .card-back img{
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
 
-.card-front {
-    z-index: 2; /*this will put the front face on top */
-}
-
-.card .card-back {
-    /* CSS styles for the back face of the card */
-    z-index: 1; /*this should put the back behind the front */
-    transform: rotateY(180deg); /* Initially rotate the back face 180 degrees */
-    position: absolute; /* Position the front and back faces absolutely */
-    backface-visibility: hidden; /* Hide the back face by default */
-    background-color: black;
-}
   .card:hover {
     transform: rotateY(180deg);
-  } 
-  
-  .card img {
-    width: 200px;
   }
-  
+
   #reset {
-    background-color: rgba(241,52,42);
-    /* cursor: pointer; */
+    background-color: rgba(241, 52, 42);
+    cursor: pointer; 
     font-size: 1.1rem;
     font-weight: 600;
     width: 100px;
     padding: 0.5rem 1rem;
   }
-  
-  

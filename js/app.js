@@ -3,66 +3,78 @@
 const cardArray = [
     {
         jeep: 'jeepney 1',
-        img: "Images/Jeepney 1.png"
+        img: "images/Jeepney 1.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 2',
-        img: "Images/Jeepney 2.png"
+        img: "images/Jeepney 2.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 3',
-        img: "Images/Jeepney 3.png"
+        img: "images/Jeepney 3.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 4',
-        img: "Images/Jeepney 4.png"
+        img: "images/Jeepney 4.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 5',
-        img: "Images/Jeepney 5.png"
+        img: "images/Jeepney 5.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 6',
-        img: "Images/Jeepney 6.png"
+        img: "images/Jeepney 6.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 7',
-        img: "Images/Jeepney 7.png"
+        img: "images/Jeepney 7.png",
+        backgroundImage: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 8',
-        img: "Images/Jeepney 8.png"
+        img: "images/Jeepney 8.png",
+        backgroundImage: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 9',
-        img: "Images/Jeepney 9.png"
+        img: "images/Jeepney 9.png",
+        backgroundImage: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 10',
-        img: "Images/Jeepney 10.png"
+        img: "images/Jeepney 10.png",
+        backgroundImage: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 11',
-        img: "Images/Jeepney 11.png"
+        img: "images/Jeepney 11.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 12',
-        img: "Images/Jeepney 12.png"
+        img: "images/Jeepney 12.png",
+        backgroundImage: "images/Back of Cards.png"
     },
 
 ]
@@ -97,8 +109,6 @@ document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', flipCard);
 });
     
-
-
 function flipCard() {
 //using flipped will help but check css for flipped
 this.classList.toggle('flipped');
@@ -123,6 +133,7 @@ this.classList.toggle('flipped');
         }
         return cardArray;
     }
+        
     
     //-------------MAKE THE GAME BOARD------------------->
     function drawCards() {
@@ -133,15 +144,15 @@ this.classList.toggle('flipped');
         shuffle(currentCards).forEach((el, index) => {
             const img = document.createElement('img');
             //adding image to image source
-            img.src = el.img;
+            img.src = el.backgroundImage;
             //set the alt text
             img.alt = el.jeep;
             img.id = index;
-            img.classList.add('.card-front');
-            img.classList.add('.card-back');
+            //img.classList.add('.card-front');
+            img.classList.add('card-back');
             //append image to card element
             //taking the game board and appending child with img
-            gameBoard.appendChild(img,'card-back');
+            gameBoard.appendChild(img);
         });
     }
     drawCards('.card-back');
@@ -154,15 +165,21 @@ this.classList.toggle('flipped');
     }
     
     startGame();
+    
 
 //---------PLAYER SELECTS MATCHES------------->
 function handleClick(event) {
+    console.log(event.target)
+    
+    //event.target search the cardArray to find the matching object (where jeep = event.target.alt) use the find. method in array
     if (!event.target.alt || isChecking) return;
 
     const cardName = event.target.alt;
     const cardId = event.target.id;
-
+    const cardPicture = event.target.img
     //check if card is already selected
+    if (!event.target.img || isChecking) return; 
+        
     const isDoubleClick = selectedCards.find(card => card.id === cardId);
     if (isDoubleClick) return console.log('invalid click');
     //this is where information is tracked
