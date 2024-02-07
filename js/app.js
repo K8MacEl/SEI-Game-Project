@@ -3,78 +3,66 @@
 const cardArray = [
     {
         jeep: 'jeepney 1',
-        img: "images/Jeepney 1.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
     },
 
     {
         jeep: 'jeepney 2',
-        img: "images/Jeepney 2.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
     },
 
     {
         jeep: 'jeepney 3',
-        img: "images/Jeepney 3.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png"
     },
 
     {
         jeep: 'jeepney 4',
-        img: "images/Jeepney 4.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png"
     },
 
     {
         jeep: 'jeepney 5',
-        img: "images/Jeepney 5.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png"
     },
 
     {
         jeep: 'jeepney 6',
-        img: "images/Jeepney 6.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 6.png"
     },
 
     {
         jeep: 'jeepney 7',
-        img: "images/Jeepney 7.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 7.png"
 
     },
 
     {
         jeep: 'jeepney 8',
-        img: "images/Jeepney 8.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png"
 
     },
 
     {
         jeep: 'jeepney 9',
-        img: "images/Jeepney 9.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png"
 
     },
 
     {
         jeep: 'jeepney 10',
-        img: "images/Jeepney 10.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png"
 
     },
 
     {
         jeep: 'jeepney 11',
-        img: "images/Jeepney 11.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png"
     },
 
     {
         jeep: 'jeepney 12',
-        img: "images/Jeepney 12.png",
-        backgroundImage: "images/Back of Cards.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png"
     },
 
 ]
@@ -109,12 +97,6 @@ document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', flipCard);
 });
     
-function flipCard() {
-//using flipped will help but check css for flipped
-this.classList.toggle('flipped');
-}    
-//toogle the cards back and forth 
-    
     //------------SHUFFLE CARDS IN ARRAY---------------->
     //generate and array of random jeepneys then through the array 
     // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
@@ -133,7 +115,6 @@ this.classList.toggle('flipped');
         }
         return cardArray;
     }
-        
     
     //-------------MAKE THE GAME BOARD------------------->
     function drawCards() {
@@ -144,15 +125,18 @@ this.classList.toggle('flipped');
         shuffle(currentCards).forEach((el, index) => {
             const img = document.createElement('img');
             //adding image to image source
-            img.src = el.backgroundImage;
+            img.src = el.img;
             //set the alt text
             img.alt = el.jeep;
             img.id = index;
-            //img.classList.add('.card-front');
+            img.classList.add('card-front');
+
+            const imgBack = document.createElement('img');
+            imgBack.scr = 'images/Back of Cards.png'
             img.classList.add('card-back');
             //append image to card element
             //taking the game board and appending child with img
-            gameBoard.appendChild(img);
+            gameBoard.appendChild(img,'card');
         });
     }
     drawCards('.card-back');
@@ -165,21 +149,15 @@ this.classList.toggle('flipped');
     }
     
     startGame();
-    
 
 //---------PLAYER SELECTS MATCHES------------->
 function handleClick(event) {
-    console.log(event.target)
-    
-    //event.target search the cardArray to find the matching object (where jeep = event.target.alt) use the find. method in array
     if (!event.target.alt || isChecking) return;
 
     const cardName = event.target.alt;
     const cardId = event.target.id;
-    const cardPicture = event.target.img
+
     //check if card is already selected
-    if (!event.target.img || isChecking) return; 
-        
     const isDoubleClick = selectedCards.find(card => card.id === cardId);
     if (isDoubleClick) return console.log('invalid click');
     //this is where information is tracked
@@ -218,6 +196,10 @@ document.getElementById('reset').addEventListener('click', function () {
     drawCards();
 });
 
+function flipCard() {
+    //using flipped will help but check css for flipped
+    this.classList.toggle('flipped');
+    }
 //Javascript feature to rotate cards back
         // setTimeout(() => {
         //     //define elements!!!!!!!!!!!!!!!!!!!!!!!!!!!
