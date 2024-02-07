@@ -129,12 +129,12 @@ document.querySelectorAll('.card').forEach(card => {
             //set the alt text
             img.alt = el.jeep;
             img.id = index;
-            img.classList.add('card-front');
+            img.classList.add('card');
 
             const imgBack = document.createElement('img');
-            imgBack.scr = 'images/Back of Cards.png'
-            img.classList.add('card-back');
-            //append image to card element
+            // imgBack.scr = 'images/Back of Cards.png'
+            // img.classList.add('card-back');
+            // //append image to card element
             //taking the game board and appending child with img
             gameBoard.appendChild(img,'card');
         });
