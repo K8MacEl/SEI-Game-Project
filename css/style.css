@@ -1,4 +1,8 @@
-  /*set up root later with the flag colors to make it easy */
+  .root{
+    --body-color:rgba(237, 212, 86);
+    --section-color: rgba(241, 52, 42);
+    --main-color: rgba(34, 68, 151);
+  }
   
   * {
     box-sizing: border-box;
@@ -13,7 +17,7 @@
     height: 100 vh;
     overflow: scroll;
     padding: 2rem;
-    background-color: rgba(237, 212, 86);
+    background-color: linear rgba(237, 212, 86);
   }
 
   .header {
@@ -25,24 +29,24 @@
   }
 
   .title {
-    color: red;
+    color: var(--section-color)
     font-family: Arial;
     font-size: 3rem;
     font-weight: 600;
     line-height: 1.2;
     background-color: white;
-    border: 20px solid blue;
+    border: 20px solid ;
     justify-content: center;
   }
 
 
   p {
     text-align: center;
-    color: rgba (32, 83, 174);
+    color: ;
   }
 
   #reset {
-    background-color: rgba(241, 52, 42);
+    background-color: 
     cursor: pointer; 
     font-size: 1.1rem;
     font-weight: 600;
@@ -50,6 +54,23 @@
     padding: 0.5rem 1rem;
   }
 
+  .pairs{
+    background-color: rgba(241, 52, 42);
+    cursor: pointer; 
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100px;
+    padding: 0.5rem 1rem;
+  }
+  .available-cards {
+    background-color: rgba(241, 52, 42);
+    cursor: pointer; 
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100px;
+    padding: 0.5rem 1rem;
+  
+  }
   .game-board {
     display: grid;
     grid-gap: 1rem;

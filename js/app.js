@@ -16,7 +16,7 @@ const cardArray = [
     {
         jeep: 'jeepney 3',
         imgFront: "images/Jeepney 3.png",
-        imgBack: "images/Back of Cards.png"
+        imgBack: "images/Jeepney 3.png"
     },
 
     {
@@ -26,58 +26,58 @@ const cardArray = [
 
     },
 
-    {
-        jeep: 'jeepney 5',
-        imgFront: "images/Jeepney 5.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 5',
+    //     imgFront: "images/Jeepney 5.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
-    {
-        jeep: 'jeepney 6',
-        imgFront: "images/Jeepney 6.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 6',
+    //     imgFront: "images/Jeepney 6.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
-    {
-        jeep: 'jeepney 7',
-        imgFront: "images/Jeepney 7.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 7',
+    //     imgFront: "images/Jeepney 7.png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 8',
-        imgFront: "images/Jeepney 8.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 8',
+    //     imgFront: "images/Jeepney 8.png",
+    //     imgBack: "images/Back of Cards.png"
 
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 9',
-        imgFront: "images/Jeepney 9.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 9',
+    //     imgFront: "images/Jeepney 9.png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 10',
-        imgFront: "images/Jeepney 10.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 10',
+    //     imgFront: "images/Jeepney 10.png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 11',
-        imgFront: "images/Jeepney 11.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 11',
+    //     imgFront: "images/Jeepney 11.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
-    {
-        jeep: 'jeepney 12',
-        imgFront: "images/Jeepney 12.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 12',
+    //     imgFront: "images/Jeepney 12.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
 ]
 //Set the game board with the array
@@ -91,7 +91,7 @@ const availableCards = document.querySelector('#available-cards');
 //shows avaialble cards in array
 let currentCards = [...cardArray, ...cardArray];
 //counts moves
-let counter = cardArray.length + 20;
+let counter = cardArray.length;
 // const drawCards
 let cardsChosen = []
 //flag to prevemt player from double selecting same card
@@ -177,12 +177,14 @@ function drawCards() {
         //console.log(card,"this is the card")
         card.classList.toggle('flipped');
     }
-
+    //varaible to track the number of matches
+    let matchedCount = 0;
     function checkForMatch() {
         const [firstCard, secondCard] = selectedCards;
-        //checkn jeep name in array to determine match
+        //check jeep name in array to determine match
         if (firstCard.name === secondCard.name) {
             console.log('Match!');
+            matchedCount++;
             // Handle match (e.g., disable further clicks on these cards)
         } else {
             console.log('Not a match');
@@ -190,13 +192,25 @@ function drawCards() {
             setTimeout(() => {
                 flipCard(firstCard.element);
                 flipCard(secondCard.element);
-            }, 2000);
+            }, 1500);
         }
     
+        if(matchedCount === cardArray.length) {
+            console.log('All matches found! Game over!')
+            //create message for winner
+            messageElement = document.createElement('div');
+            messageElement.textContent = 'Congratulations! You have matched all Jeepneys!'
+            //append message element to the DOM
+            document.body.appendChild(messageElement);
+        }
         // Reset selectedCards and isChecking for the next turn
         selectedCards = [];
         isChecking = false;
     }
+
+//celebrateWinner (when all pairs matched)
+
+
 //----------RESET GAME--------------------.
 // Call the drawCards() function when the "Reset" button is clicked
 document.getElementById('reset').addEventListener('click', function () {
@@ -206,6 +220,5 @@ document.getElementById('reset').addEventListener('click', function () {
 //Easy option of only 4 pairs
 //Medium option of only 8 pairs)
 //Hard option of all 12 pairs
-//stop timer
+//timer
 //guess counter
-//celebrateWinner (when all pairs matched)
