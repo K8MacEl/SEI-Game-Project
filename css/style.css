@@ -17,7 +17,8 @@
     height: 100 vh;
     overflow: scroll;
     padding: 2rem;
-    background-color: linear rgba(237, 212, 86);
+    background: rgb(225,233,234);
+    background: linear-gradient(90deg, rgba(225,233,234,1) 0%, rgba(34,68,151,0.8337928921568627) 77%);
   }
 
   .header {
@@ -29,16 +30,22 @@
   }
 
   .title {
-    color: var(--section-color)
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgba(237, 212, 86);
     font-family: Arial;
-    font-size: 3rem;
+    font-size: 6rem;
+    height: 200px;
+    width: 800px;
     font-weight: 600;
     line-height: 1.2;
-    background-color: white;
-    border: 20px solid ;
-    justify-content: center;
+    background-color:  rgba(34, 68, 141);;
+    border: 20px solid rgba(241, 52, 42);
   }
-
+.slogan {
+  font-size: 2rem;
+}
 
   p {
     text-align: center;
