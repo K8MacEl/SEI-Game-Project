@@ -84,6 +84,7 @@ const cardArray = [
 const gameBoard = document.querySelector('.card');
 //Event listener for game
 gameBoard.addEventListener('click', handleClick);
+//pulls all cards on the gameBoard
 const cards = document.querySelectorAll('.card');
 //all unmatched cards
 const availableCards = document.querySelector('#available-cards');
@@ -96,20 +97,7 @@ let cardsChosen = []
 //flag to prevemt player from double selecting same card
 let isChecking = false;
 //array to store current cards 
-let selectedCards = [];
-
-
-//front and back of card elements--NOT FUNCTIONING
-const getFrontandBackFromCard = (card) => {
-         const front = card.querySelector('card-front');
-         const back = card.querySelector('card-back');
-         return [front, back];
-     };
-
-     // // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
-     
-    
-    
+let selectedCards = [];    
     //------------SHUFFLE CARDS IN ARRAY---------------->
     //generate and array of random jeepneys then through the array 
     // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
@@ -132,13 +120,6 @@ const getFrontandBackFromCard = (card) => {
     //-------------MAKE THE GAME BOARD------------------->
     // Update the drawCards function to set imgBack source for each card
 function drawCards() {
-
-    // document.querySelectorAll('.card').forEach(card => {
-    //     card.addEventListener('click', (e,card) => flipCard(card));
-    //     console.log(card,"this is foreach")
-    // });
-
-    //clears existing cards
     gameBoard.innerHTML = '';
     availableCards.innerHTML = counter;
     
@@ -162,22 +143,8 @@ function drawCards() {
         gameBoard.appendChild(card);
     });
 }
-
-    // drawCards();
-
-
-// Flip card function
-// function flipCard() {
-//     if (this.classList.contains('card')) {
-//         this.classList.toggle('flipped');
-//     }
-// }
-
-
 //--------START THE GAME----------------------->
     function startGame() {
-    
-        console.log("Tayo-na! Let's play!");
         drawCards();
     }
     
@@ -185,17 +152,18 @@ function drawCards() {
 
     function handleClick(event) {
         if (isChecking) return;
-    
+        //event handler for the card closest to the point
         let clickedCard = event.target.closest('.card');
+        //adds first card flipped to clickedCard
         if (!clickedCard || clickedCard.classList.contains('flipped')) return;
-    
         // Flip the clicked card
         flipCard(clickedCard);
-        console.log(clickedCard, "This is clicked card")
         // Add the clicked card to the selectedCards array
         const cardName = clickedCard.querySelector('.card-front').alt;
+        //adds an id to each card so disables the ability to click one card twice
         const cardId = clickedCard.dataset.id;
         const cardSelected = { name: cardName, id: cardId, element: clickedCard };
+        //pushes matched cards into selectedCards array
         selectedCards.push(cardSelected);
     
         // Check if this is the second card
@@ -206,13 +174,13 @@ function drawCards() {
     }
     
     function flipCard(card) {
-        console.log(card,"this is the card")
+        //console.log(card,"this is the card")
         card.classList.toggle('flipped');
     }
 
     function checkForMatch() {
         const [firstCard, secondCard] = selectedCards;
-    
+        //checkn jeep name in array to determine match
         if (firstCard.name === secondCard.name) {
             console.log('Match!');
             // Handle match (e.g., disable further clicks on these cards)
@@ -221,85 +189,19 @@ function drawCards() {
             // Flip back the cards after a short delay
             setTimeout(() => {
                 flipCard(firstCard.element);
-                console.log(firstCard.element,"this is firstcard element")
                 flipCard(secondCard.element);
-                console.log(secondCard.element,"this is secondcard element")
-            }, 1000);
+            }, 2000);
         }
     
         // Reset selectedCards and isChecking for the next turn
         selectedCards = [];
         isChecking = false;
     }
-
-
-
-//---------PLAYER SELECTS MATCHES------------->
-// function handleClick(event) {
-//     let clickedCard =  event.target.closest('.card');
-//     if(!clickedCard || isChecking) return;
-//     if (!event.target.alt || isChecking) return;
-
-//     const cardName = event.target.alt;
-//     const cardId = event.target.id;
-
-//     //check if card is already selected
-//     const isDoubleClick = selectedCards.find(card => card.id === cardId);
-//     if (isDoubleClick) return console.log('invalid click');
-//     //this is where information is tracked
-//     const cardSelected = { name: cardName, id: cardId }
-
-//     selectedCards.push(cardSelected)
-    
-//     if (selectedCards.length === 2) {
-//         isChecking = true; //prevents further selections until check is completed
-                             
-//         const isMatch = selectedCards[0].name === selectedCards[1].name
-//         if (isMatch) {
-//             console.log('Match!');
-//             //push selected cards into array
-//             selectedCards.forEach(card => {
-//                 if (!cardsChosen.includes(card)) {
-//                     cardsChosen.push(card);
-//                 }
-//             });
-//             console.log("Updated selectedCards array:",selectedCards); 
-//             //check if all cards are chosen
-//             if (cardsChosen.length === cardArray.length) {
-//                 console.log('Game over, all cards have been selected');
-//             }
-//          } else {
-//             console.log('not a match');
-//          }
-//          selectedCards = [];
-//          isChecking = false;
-//     }
-//     flipCard.call(clickedCard);
-// }
-
 //----------RESET GAME--------------------.
 // Call the drawCards() function when the "Reset" button is clicked
 document.getElementById('reset').addEventListener('click', function () {
     drawCards();
 });
-
-// function flipCard() {
-//     //using flipped will help but check css for flipped
-//     this.classList.toggle('flipped');
-//     }
-//Javascript feature to rotate cards back
-        // setTimeout(() => {
-        //     //define elements!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //     rotateElements([card-front, card-back, firstFront, firtsBack]);
-        //     firstPick = null;
-        // },500)
-    
-
-
-//unflipCard (when two unmacthed cards are flipped)
-//let hasFlippedCard 
-
-
 /*-------ice box items-----*/
 //Easy option of only 4 pairs
 //Medium option of only 8 pairs)
