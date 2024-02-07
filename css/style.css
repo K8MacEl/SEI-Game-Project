@@ -133,30 +133,7 @@
   
   .hidden {
     display: none;
-  }
-  /* .card-back{
-    position: relative;
-    background-color: black;
-    backface-visibility: hidden;
-    
-  } */
-  
-  
-  /* .card-front img{
-    z-index: 2;
-    backface-visibility: hidden;
-    
-    position: absolute;
-    opacity: .5;
-  }
-  
-  .card-back img{
-    position: absolute;
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-    z-index: 1;
-  } */
-  
+  }  
   
   .hanldeclick {
 

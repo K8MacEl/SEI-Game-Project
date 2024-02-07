@@ -16,68 +16,68 @@ const cardArray = [
     {
         jeep: 'jeepney 3',
         imgFront: "images/Jeepney 3.png",
-        imgBack: "images/Jeepney 3.png"
+        imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 4',
         imgFront: "images/Jeepney 4.png",
-        imgBack: "images/Jeepney 4.png"
+        imgBack: "images/Back of Cards.png"
 
     },
 
-    // {
-    //     jeep: 'jeepney 5',
-    //     imgFront: "images/Jeepney 5.png",
-    //     imgBack: "images/Back of Cards.png"
-    // },
+    {
+        jeep: 'jeepney 5',
+        imgFront: "images/Jeepney 5.png",
+        imgBack: "images/Back of Cards.png"
+    },
 
-    // {
-    //     jeep: 'jeepney 6',
-    //     imgFront: "images/Jeepney 6.png",
-    //     imgBack: "images/Back of Cards.png"
-    // },
+    {
+        jeep: 'jeepney 6',
+        imgFront: "images/Jeepney 6.png",
+        imgBack: "images/Back of Cards.png"
+    },
 
-    // {
-    //     jeep: 'jeepney 7',
-    //     imgFront: "images/Jeepney 7.png",
-    //     imgBack: "images/Back of Cards.png"
+    {
+        jeep: 'jeepney 7',
+        imgFront: "images/Jeepney 7.png",
+        imgBack: "images/Back of Cards.png"
 
-    // },
+    },
 
-    // {
-    //     jeep: 'jeepney 8',
-    //     imgFront: "images/Jeepney 8.png",
-    //     imgBack: "images/Back of Cards.png"
+    {
+        jeep: 'jeepney 8',
+        imgFront: "images/Jeepney 8.png",
+        imgBack: "images/Back of Cards.png"
 
 
-    // },
+    },
 
-    // {
-    //     jeep: 'jeepney 9',
-    //     imgFront: "images/Jeepney 9 .png",
-    //     imgBack: "images/Back of Cards.png"
+    {
+        jeep: 'jeepney 9',
+        imgFront: "images/Jeepney 9 .png",
+        imgBack: "images/Back of Cards.png"
 
-    // },
+    },
 
-    // {
-    //     jeep: 'jeepney 10',
-    //     imgFront: "images/Jeepney 10.png",
-    //     imgBack: "images/Back of Cards.png"
+    {
+        jeep: 'jeepney 10',
+        imgFront: "images/Jeepney 10.png",
+        imgBack: "images/Back of Cards.png"
 
-    // },
+    },
 
-    // {
-    //     jeep: 'jeepney 11',
-    //     imgFront: "images/Jeepney 11.png",
-    //     imgBack: "images/Jeepney 11.png"
-    // },
+    {
+        jeep: 'jeepney 11',
+        imgFront: "images/Jeepney 11.png",
+        imgBack: "images/Back of Cards.png"
+    },
 
-    // {
-    //     jeep: 'jeepney 12',
-    //     imgFront: "images/Jeepney 12.png",
-    //     imgBack: "images/Back of Cards.png"
-    // },
+    {
+        jeep: 'jeepney 12',
+        imgFront: "images/Jeepney 12.png",
+        imgBack: "images/Back of Cards.png"
+    },
 
 ]
 //Set the game board with the array
