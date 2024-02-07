@@ -192,7 +192,7 @@ function drawCards() {
             setTimeout(() => {
                 flipCard(firstCard.element);
                 flipCard(secondCard.element);
-            }, 1500);
+            }, 500);
         }
     
         if(matchedCount === cardArray.length) {
