@@ -3,49 +3,51 @@
 const cardArray = [
     {
         jeep: 'jeepney 1',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png",
+        imgFront: "images/Jeepney 1.png",
         imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 2',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png",
+        imgFront: "images/Jeepney 2.png",
         imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 3',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png",
+        imgFront: "images/Jeepney 3.png",
         imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 4',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png",
+        imgFront: "images/Jeepney 4.png",
         imgBack: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 5',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png",
+        imgFront: "images/Jeepney 5.png",
         imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 6',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 6.png"
+        imgFront: "images/Jeepney 6.png",
+        imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 7',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 7.png"
+        imgFront: "images/Jeepney 7.png",
+        imgBack: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 8',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png",
+        imgFront: "images/Jeepney 8.png",
         imgBack: "images/Back of Cards.png"
 
 
@@ -53,33 +55,33 @@ const cardArray = [
 
     {
         jeep: 'jeepney 9',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png",
+        imgFront: "images/Jeepney 9.png",
         imgBack: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 10',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png",
+        imgFront: "images/Jeepney 10.png",
         imgBack: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 11',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png",
+        imgFront: "images/Jeepney 11.png",
         imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 12',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png",
+        imgFront: "images/Jeepney 12.png",
         imgBack: "images/Back of Cards.png"
     },
 
 ]
 //Set the game board with the array
-const gameBoard = document.querySelector('.game-board');
+const gameBoard = document.querySelector('.card');
 //Event listener for game
 gameBoard.addEventListener('click', handleClick);
 const cards = document.querySelectorAll('.card');
@@ -105,9 +107,8 @@ const getFrontandBackFromCard = (card) => {
      };
 
      // // //flipCard-NEEDS WORK BACK SIDE IS NOT SHOWING
-document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', flipCard);
-});
+     
+    
     
     //------------SHUFFLE CARDS IN ARRAY---------------->
     //generate and array of random jeepneys then through the array 
@@ -129,29 +130,48 @@ document.querySelectorAll('.card').forEach(card => {
     }
     
     //-------------MAKE THE GAME BOARD------------------->
-    function drawCards() {
-        //clears existing cards
-        gameBoard.innerHTML = '';
-        availableCards.innerHTML = counter;
-        
-        shuffle(currentCards).forEach((el, index) => {
-            const img = document.createElement('img');
-            //adding image to image source
-            img.src = el.img;
-            //set the alt text
-            img.alt = el.jeep;
-            img.id = index;
-            img.classList.add('card');
-           
-            const imgBack = document.createElement('img');
-            // imgBack.scr = el.imgBack;
-            // img.classList.add('card-back');
-            // //append image to card element
-            //taking the game board and appending child with img
-            gameBoard.appendChild(img);
-        });
-    }
+    // Update the drawCards function to set imgBack source for each card
+function drawCards() {
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', flipCard);
+    });
+
+    //clears existing cards
+    gameBoard.innerHTML = '';
+    availableCards.innerHTML = counter;
+    
+    shuffle(currentCards).forEach((el, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const imgFront = document.createElement('img');
+        imgFront.src = el.imgFront;
+        imgFront.alt = el.jeep;
+        imgFront.classList.add('card-front');
+
+        const imgBack = document.createElement('img');
+        imgBack.src = el.imgBack;
+        imgBack.classList.add('card-back');
+
+        card.appendChild(imgBack);
+        card.appendChild(imgFront);
+        card.dataset.id = index;
+
+        gameBoard.appendChild(card);
+    });
+}
+
     drawCards();
+
+
+// Flip card function
+function flipCard() {
+    if (this.classList.contains('card')) {
+        this.classList.toggle('flipped');
+    }
+}
+
 
 //--------START THE GAME----------------------->
     function startGame() {
@@ -164,6 +184,8 @@ document.querySelectorAll('.card').forEach(card => {
 
 //---------PLAYER SELECTS MATCHES------------->
 function handleClick(event) {
+    let clickedCard =  event.target.closest('.card');
+    if(!clickedCard || isChecking) return;
     if (!event.target.alt || isChecking) return;
 
     const cardName = event.target.alt;
@@ -208,10 +230,10 @@ document.getElementById('reset').addEventListener('click', function () {
     drawCards();
 });
 
-function flipCard() {
-    //using flipped will help but check css for flipped
-    this.classList.toggle('flipped');
-    }
+// function flipCard() {
+//     //using flipped will help but check css for flipped
+//     this.classList.toggle('flipped');
+//     }
 //Javascript feature to rotate cards back
         // setTimeout(() => {
         //     //define elements!!!!!!!!!!!!!!!!!!!!!!!!!!!
