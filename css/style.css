@@ -5,12 +5,13 @@
   }
   
   * {
-    box-sizing: border-box;
+    box-sizing: inherit;
     font-family: Arial;
     margin: 0;
     padding: 0;
     scroll-behavior: auto;
     cursor: pointer;
+    padding: 0;
   }
 
   body {
@@ -51,18 +52,24 @@
 
   p {
     text-align: center;
-    color: ;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: rgba(237, 212, 86, .8);
+    height: 12rem;
+    width: 50rem;
+    font-size: x-large;
+    font-family: 'Gill Sans';
   }
+  .play{
+    font-size: large;
+    height: 10rem;
+    width: 70rem;
+    text-align: center;
 
-  #reset {
-    background-color: 
-    cursor: pointer; 
-    font-size: 1.1rem;
-    font-weight: 600;
-    width: 100px;
-    padding: 0.5rem 1rem;
+
   }
-
+  
   .pairs{
     background-color: rgba(241, 52, 42);
     cursor: pointer; 
@@ -73,35 +80,44 @@
     display: grid;
     justify-content: center;
   }
+  .game-info {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  #reset {
+    background-color: rgba(241, 52, 42);
+    font-weight: 600;
+    width: 100px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 5rem;
+  }
+
   .available-cards {
     background-color: rgba(241, 52, 42);
     cursor: pointer; 
     font-size: 1.1rem;
     font-weight: 600;
-    width: 100px;
+    width: 3rem;
     padding: 0.5rem 1rem;
-  
-  }
-  .game-board {
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+  }
+  .matches-made {
+    display: grid;
+
   }
  
   .card {
     /* do not change to absolute or all cards stack on top */
     margin-left: center; 
     margin-right: center;
-    /* position: relative;  */
-    /* width: 300px;
-    height: 300px; */
     display: grid;
-    grid-template-columns: repeat(6, 225px);
-    grid-template-rows: repeat(4, 300px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(6, 200px);
+    grid-template-rows: repeat(4, 260px);
+    grid-row-gap: 0.1rem;
     }
   
   .card-front, .card-back {
@@ -143,22 +159,3 @@
     display: none;
   }  
   
-  .hanldeclick {
-
-  }
-
-  .modal-container {
-
-  }
-
-  .modal-title {
-
-  }
-
-  .available-cards {
-
-  }
-
-  .container {
-
-  }  
