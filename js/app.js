@@ -182,47 +182,96 @@ function flipCard() {
     
     startGame();
 
-//---------PLAYER SELECTS MATCHES------------->
-function handleClick(event) {
-    let clickedCard =  event.target.closest('.card');
-    if(!clickedCard || isChecking) return;
-    if (!event.target.alt || isChecking) return;
-
-    const cardName = event.target.alt;
-    const cardId = event.target.id;
-
-    //check if card is already selected
-    const isDoubleClick = selectedCards.find(card => card.id === cardId);
-    if (isDoubleClick) return console.log('invalid click');
-    //this is where information is tracked
-    const cardSelected = { name: cardName, id: cardId }
-
-    selectedCards.push(cardSelected)
+    function handleClick(event) {
+        if (isChecking) return;
     
-    if (selectedCards.length === 2) {
-        isChecking = true; //prevents further selections until check is completed
-                             
-        const isMatch = selectedCards[0].name === selectedCards[1].name
-        if (isMatch) {
-            console.log('Match!');
-            //push selected cards into array
-            selectedCards.forEach(card => {
-                if (!cardsChosen.includes(card)) {
-                    cardsChosen.push(card);
-                }
-            });
-            console.log("Updated selectedCards array:",selectedCards); 
-            //check if all cards are chosen
-            if (cardsChosen.length === cardArray.length) {
-                console.log('Game over, all cards have been selected');
-            }
-         } else {
-            console.log('not a match');
-         }
-         selectedCards = [];
-         isChecking = false;
+        let clickedCard = event.target.closest('.card');
+        if (!clickedCard || clickedCard.classList.contains('flipped')) return;
+    
+        // Flip the clicked card
+        flipCard(clickedCard);
+    
+        // Add the clicked card to the selectedCards array
+        const cardName = clickedCard.querySelector('.card-front').alt;
+        const cardId = clickedCard.dataset.id;
+        const cardSelected = { name: cardName, id: cardId, element: clickedCard };
+        selectedCards.push(cardSelected);
+    
+        // Check if this is the second card
+        if (selectedCards.length === 2) {
+            isChecking = true;
+            checkForMatch();
+        }
     }
-}
+    
+    function flipCard(card) {
+        card.classList.toggle('flipped');
+    }
+    
+    function checkForMatch() {
+        const [firstCard, secondCard] = selectedCards;
+    
+        if (firstCard.name === secondCard.name) {
+            console.log('Match!');
+            // Handle match (e.g., disable further clicks on these cards)
+        } else {
+            console.log('Not a match');
+            // Flip back the cards after a short delay
+            setTimeout(() => {
+                flipCard(firstCard.element);
+                flipCard(secondCard.element);
+            }, 1000);
+        }
+    
+        // Reset selectedCards and isChecking for the next turn
+        selectedCards = [];
+        isChecking = false;
+    }
+
+
+
+//---------PLAYER SELECTS MATCHES------------->
+// function handleClick(event) {
+//     let clickedCard =  event.target.closest('.card');
+//     if(!clickedCard || isChecking) return;
+//     if (!event.target.alt || isChecking) return;
+
+//     const cardName = event.target.alt;
+//     const cardId = event.target.id;
+
+//     //check if card is already selected
+//     const isDoubleClick = selectedCards.find(card => card.id === cardId);
+//     if (isDoubleClick) return console.log('invalid click');
+//     //this is where information is tracked
+//     const cardSelected = { name: cardName, id: cardId }
+
+//     selectedCards.push(cardSelected)
+    
+//     if (selectedCards.length === 2) {
+//         isChecking = true; //prevents further selections until check is completed
+                             
+//         const isMatch = selectedCards[0].name === selectedCards[1].name
+//         if (isMatch) {
+//             console.log('Match!');
+//             //push selected cards into array
+//             selectedCards.forEach(card => {
+//                 if (!cardsChosen.includes(card)) {
+//                     cardsChosen.push(card);
+//                 }
+//             });
+//             console.log("Updated selectedCards array:",selectedCards); 
+//             //check if all cards are chosen
+//             if (cardsChosen.length === cardArray.length) {
+//                 console.log('Game over, all cards have been selected');
+//             }
+//          } else {
+//             console.log('not a match');
+//          }
+//          selectedCards = [];
+//          isChecking = false;
+//     }
+//     flipCard.call(clickedCard);
+// }
 
 //----------RESET GAME--------------------.
 // Call the drawCards() function when the "Reset" button is clicked
