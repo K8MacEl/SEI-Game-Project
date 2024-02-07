@@ -133,9 +133,10 @@ const getFrontandBackFromCard = (card) => {
     // Update the drawCards function to set imgBack source for each card
 function drawCards() {
 
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', flipCard);
-    });
+    // document.querySelectorAll('.card').forEach(card => {
+    //     card.addEventListener('click', (e,card) => flipCard(card));
+    //     console.log(card,"this is foreach")
+    // });
 
     //clears existing cards
     gameBoard.innerHTML = '';
@@ -162,15 +163,15 @@ function drawCards() {
     });
 }
 
-    drawCards();
+    // drawCards();
 
 
 // Flip card function
-function flipCard() {
-    if (this.classList.contains('card')) {
-        this.classList.toggle('flipped');
-    }
-}
+// function flipCard() {
+//     if (this.classList.contains('card')) {
+//         this.classList.toggle('flipped');
+//     }
+// }
 
 
 //--------START THE GAME----------------------->
@@ -190,7 +191,7 @@ function flipCard() {
     
         // Flip the clicked card
         flipCard(clickedCard);
-    
+        console.log(clickedCard, "This is clicked card")
         // Add the clicked card to the selectedCards array
         const cardName = clickedCard.querySelector('.card-front').alt;
         const cardId = clickedCard.dataset.id;
@@ -205,9 +206,10 @@ function flipCard() {
     }
     
     function flipCard(card) {
+        console.log(card,"this is the card")
         card.classList.toggle('flipped');
     }
-    
+
     function checkForMatch() {
         const [firstCard, secondCard] = selectedCards;
     
@@ -219,7 +221,9 @@ function flipCard() {
             // Flip back the cards after a short delay
             setTimeout(() => {
                 flipCard(firstCard.element);
+                console.log(firstCard.element,"this is firstcard element")
                 flipCard(secondCard.element);
+                console.log(secondCard.element,"this is secondcard element")
             }, 1000);
         }
     
