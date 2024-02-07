@@ -22,7 +22,7 @@ const cardArray = [
     {
         jeep: 'jeepney 4',
         imgFront: "images/Jeepney 4.png",
-        imgBack: "images/Back of Cards.png"
+        imgBack: "images/Jeepney 4.png"
 
     },
 
@@ -55,7 +55,7 @@ const cardArray = [
 
     // {
     //     jeep: 'jeepney 9',
-    //     imgFront: "images/Jeepney 9.png",
+    //     imgFront: "images/Jeepney 9 .png",
     //     imgBack: "images/Back of Cards.png"
 
     // },
@@ -70,7 +70,7 @@ const cardArray = [
     // {
     //     jeep: 'jeepney 11',
     //     imgFront: "images/Jeepney 11.png",
-    //     imgBack: "images/Back of Cards.png"
+    //     imgBack: "images/Jeepney 11.png"
     // },
 
     // {
