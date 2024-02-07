@@ -3,27 +3,33 @@
 const cardArray = [
     {
         jeep: 'jeepney 1',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 1.png",
+        imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 2',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 2.png",
+        imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 3',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 3.png",
+        imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 4',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 4.png",
+        imgBack: "images/Back of Cards.png"
+
     },
 
     {
         jeep: 'jeepney 5',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 5.png",
+        imgBack: "images/Back of Cards.png"
     },
 
     {
@@ -39,30 +45,36 @@ const cardArray = [
 
     {
         jeep: 'jeepney 8',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 8.png",
+        imgBack: "images/Back of Cards.png"
+
 
     },
 
     {
         jeep: 'jeepney 9',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 9.png",
+        imgBack: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 10',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 10.png",
+        imgBack: "images/Back of Cards.png"
 
     },
 
     {
         jeep: 'jeepney 11',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 11.png",
+        imgBack: "images/Back of Cards.png"
     },
 
     {
         jeep: 'jeepney 12',
-        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png"
+        img: "/Users/trevormcelhaney/code/SEI-Game-Project/Images/Jeepney 12.png",
+        imgBack: "images/Back of Cards.png"
     },
 
 ]
@@ -87,8 +99,8 @@ let selectedCards = [];
 
 //front and back of card elements--NOT FUNCTIONING
 const getFrontandBackFromCard = (card) => {
-         const front = card.querySelector('.card-front');
-         const back = card.querySelector('.card-back');
+         const front = card.querySelector('card-front');
+         const back = card.querySelector('card-back');
          return [front, back];
      };
 
@@ -130,16 +142,16 @@ document.querySelectorAll('.card').forEach(card => {
             img.alt = el.jeep;
             img.id = index;
             img.classList.add('card');
-
+           
             const imgBack = document.createElement('img');
-            // imgBack.scr = 'images/Back of Cards.png'
+            // imgBack.scr = el.imgBack;
             // img.classList.add('card-back');
             // //append image to card element
             //taking the game board and appending child with img
-            gameBoard.appendChild(img,'card');
+            gameBoard.appendChild(img);
         });
     }
-    drawCards('.card-back');
+    drawCards();
 
 //--------START THE GAME----------------------->
     function startGame() {

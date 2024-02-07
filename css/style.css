@@ -1,3 +1,5 @@
+  /*set up root later with the flag colors to make it easy */
+  
   * {
     box-sizing: border-box;
     font-family: Arial;
@@ -44,19 +46,8 @@
     grid-gap: 1rem;
     grid-template-columns: auto auto auto auto;
   }
-
-  /* .inner {
-
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform .5s;
-  } */
-
  
   .container {
-
     position: relative;
     width: 250 px;
     height: 320 px;
@@ -64,28 +55,33 @@
   }
 
   .card {
-    position: relative;
+    /* do not change to absolute or all cards stack on top */
+    position: relative; 
     width: 300px;
     height: 300px;
     transform-style: preserve-3d;
     transition: all 0.5s ease;
   }
   .card-front {
-    /* transform: rotateY(180deg); */
-    position: absolute;
+    transform: rotateY(180deg);
+    position: relative
     width: 20%;
     height: 20%;
     backface-visibility: hidden;
+    cursor: pointer;
   }
-  .card-front, .card-back {
+.card-front .is-flipped{
+  transform: rotateY(180deg);
+}
+
+  /* .card-front, .card-back {
     transition: transform 330ms ease-in-out;  
-  }
-
-
+  } */
 
   .card-back{
-    z-index: 2;
+    position: relative;
     background-color: black;
+    backface-visibility: hidden;
     
   }
 
