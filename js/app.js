@@ -97,31 +97,31 @@ let cardsChosen = []
 //flag to prevemt player from double selecting same card
 let isChecking = false;
 //array to store current cards 
-let selectedCards = [];    
-    //------------SHUFFLE CARDS IN ARRAY---------------->
-    //generate and array of random jeepneys then through the array 
-    // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
-    const shuffle = function shuffle(cardArray) {
-        let counter = cardArray.length, t, i;
-        
-        //while there remain elements to shuffle
-        while (counter) {
-            //pick a remaining element
-            i = Math.floor(Math.random() * counter--);
-            
-            //and swap it with the current element
-            t = cardArray[counter];
-            cardArray[counter] = cardArray[i];
-            cardArray[i] = t;
-        }
-        return cardArray;
+let selectedCards = [];
+//------------SHUFFLE CARDS IN ARRAY---------------->
+//generate and array of random jeepneys then through the array 
+// Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
+const shuffle = function shuffle(cardArray) {
+    let counter = cardArray.length, t, i;
+
+    //while there remain elements to shuffle
+    while (counter) {
+        //pick a remaining element
+        i = Math.floor(Math.random() * counter--);
+
+        //and swap it with the current element
+        t = cardArray[counter];
+        cardArray[counter] = cardArray[i];
+        cardArray[i] = t;
     }
-    
-    //-------------MAKE THE GAME BOARD------------------->
-    // Update the drawCards function to set imgBack source for each card
+    return cardArray;
+}
+
+//-------------MAKE THE GAME BOARD------------------->
+// Update the drawCards function to set imgBack source for each card
 function drawCards() {
     gameBoard.innerHTML = '';
-    
+
     shuffle(currentCards).forEach((el, index) => {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -143,76 +143,89 @@ function drawCards() {
     });
 }
 //--------START THE GAME----------------------->
-    function startGame() {
-        drawCards();
-    }
-    
-    startGame();
+function startGame() {
+    drawCards();
+}
 
-    function handleClick(event) {
-        if (isChecking) return;
-        //event handler for the card closest to the point
-        let clickedCard = event.target.closest('.card');
-        //adds first card flipped to clickedCard
-        if (!clickedCard || clickedCard.classList.contains('flipped')) return;
-        // Flip the clicked card
-        flipCard(clickedCard);
-        // Add the clicked card to the selectedCards array
-        const cardName = clickedCard.querySelector('.card-front').alt;
-        //adds an id to each card so disables the ability to click one card twice
-        const cardId = clickedCard.dataset.id;
-        const cardSelected = { name: cardName, id: cardId, element: clickedCard };
-        //pushes matched cards into selectedCards array
-        selectedCards.push(cardSelected);
-    
-        // Check if this is the second card
-        if (selectedCards.length === 2) {
-            isChecking = true;
-            checkForMatch();
-        }
-    }
-    
-    function flipCard(card) {
-        //console.log(card,"this is the card")
-        card.classList.toggle('flipped');
-    }
-    //varaible to track the number of matches
-    let matchedCount = 0;
-    function checkForMatch() {
-        const [firstCard, secondCard] = selectedCards;
-        //check jeep name in array to determine match
-        if (firstCard.name === secondCard.name) {
-            console.log('Match!');
-            matchedCount++;
-            updateMatchedCount()
-            // Handle match (e.g., disable further clicks on these cards)
-        } else {
-            console.log('Not a match');
-            // Flip back the cards after a short delay
-            setTimeout(() => {
-                flipCard(firstCard.element);
-                flipCard(secondCard.element);
-            }, 500);
-        }
-    
-        if(matchedCount === cardArray.length) {
-            console.log('All matches found! Game over!')
-            //create message for winner
-            messageElement = document.createElement('div');
-            messageElement.textContent = 'Congratulations! You have matched all Jeepneys!'
-            //append message element to the DOM
-            document.body.appendChild(messageElement);
-        }
-        // Reset selectedCards and isChecking for the next turn
-        selectedCards = [];
-        isChecking = false;
+startGame();
 
-        // Update the matched count on the DOM
-        function updateMatchedCount() {
-            const matchedCountElement = document.getElementById('matches-made');
-            matchedCountElement.textContent = `Matches made: ${matchedCount}`;
-            console.log(matchedCount, "This is matched count")
+function handleClick(event) {
+    if (isChecking) return;
+    //event handler for the card closest to the point
+    let clickedCard = event.target.closest('.card');
+    //adds first card flipped to clickedCard
+    if (!clickedCard || clickedCard.classList.contains('flipped')) return;
+    // Flip the clicked card
+    flipCard(clickedCard);
+    // Add the clicked card to the selectedCards array
+    const cardName = clickedCard.querySelector('.card-front').alt;
+    //adds an id to each card so disables the ability to click one card twice
+    const cardId = clickedCard.dataset.id;
+    const cardSelected = { name: cardName, id: cardId, element: clickedCard };
+    //pushes matched cards into selectedCards array
+    selectedCards.push(cardSelected);
+
+    // Check if this is the second card
+    if (selectedCards.length === 2) {
+        isChecking = true;
+        checkForMatch();
     }
+}
+
+function flipCard(card) {
+    //console.log(card,"this is the card")
+    card.classList.toggle('flipped');
+}
+//varaible to track the number of matches
+let matchedCount = 0;
+let guessCount = 0;
+
+function checkForMatch() {
+    const [firstCard, secondCard] = selectedCards;
+    guessCount++;
+    updateGuessCount()
+    //check jeep name in array to determine match
+    if (firstCard.name === secondCard.name) {
+        console.log('Match!');
+        matchedCount++;
+        updateMatchedCount()
+        //count number of guesses
+        // Handle match (e.g., disable further clicks on these cards)
+    } else {
+        console.log('Not a match');
+        // Flip back the cards after a short delay
+        setTimeout(() => {
+            flipCard(firstCard.element);
+            flipCard(secondCard.element);
+        }, 500);
+    }
+
+    if (matchedCount === cardArray.length) {
+        console.log('All matches found! Game over!')
+        //create message for winner
+        messageElement = document.createElement('div');
+        messageElement.textContent = 'Congratulations! You have matched all Jeepneys!'
+        //append message element to the DOM
+        document.body.appendChild(messageElement);
+    }
+    // Reset selectedCards and isChecking for the next turn
+    selectedCards = [];
+    isChecking = false;
+
+    function updateGuessCount() {
+        const guessesMadeElement = document.getElementById('guesses-made');
+        guessesMadeElement.textContent = `Guesses made: ${guessCount}`;
+        console.log(guessCount, "Guess count logged")
+    }
+
+    // Update the matched count on the DOM
+    function updateMatchedCount() {
+        const matchedCountElement = document.getElementById('matches-made');
+        matchedCountElement.textContent = `Matches made: ${matchedCount}`;
+        console.log(matchedCount, "This is matched count")
+    }
+
+
 
 }
 
