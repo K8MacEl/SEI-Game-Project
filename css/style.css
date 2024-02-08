@@ -62,8 +62,6 @@ p {
     text-align: center;
     font-family: 'Gill Sans';
     font-size: x-large;
-
-
   }
   
   .pairs{
@@ -77,26 +75,29 @@ p {
     margin-right: auto;
     position: center;
     display: grid;
-    padding:  15rem 1rem 1rem 6rem;
-    grid-template-columns: repeat(3, 2fr);
+    grid-template-columns: (3, 1fr);
+    grid: 10px;
+    padding-left: 8rem;
   }
   
   
   #available-cards{
+    display: hidden;
+  }
+
+  #matches-made {
     background-color: rgba(34, 68, 151);
     color: white;
     border: 10px outset rgba(34, 68, 151);
     width: 10rem;
-    height: 10rem;
-    font-size: x-large;
-  }
-
-  #matches-made {
-    background-color: rgba(237, 212, 86);
-    border: 10px outset rgba(237, 212, 86, .8);
-    width: 10rem;
-    height: 10rem;
+    height: 5rem;
     font-size: x-large; 
+    grid-column: 1;
+    grid-row: 1;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text for good measure */
   }
   
 
@@ -104,8 +105,14 @@ p {
     background-color: rgba(237, 212, 86);
     border: 10px outset rgba(237, 212, 86, .8);
     width: 10rem;
-    height: 10rem;
+    height: 5rem;
     font-size: x-large;
+    grid-column: 2;
+    grid-row: 1;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text for good measure */
   }
 
 
@@ -113,10 +120,15 @@ p {
     background-color: rgba(241, 52, 42);
     border: 10px outset rgb(116, 16, 10);
     font-size: x-large;
-    width: 14rem;
-    height: 4rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    position: relative;
+    width: 10rem;
+    height: 5rem;
+    grid-column: 3;
+    grid-row: 1;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text for good measure */
   }
 
  
@@ -186,7 +198,7 @@ p {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
