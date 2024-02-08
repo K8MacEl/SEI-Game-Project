@@ -103,6 +103,8 @@ let matchedCount = 0;
 //varaible to track number of pairs guess and later function pushes to the DOM
 let guessCount = 0;
 
+
+
 //------------SHUFFLE CARDS IN ARRAY---------------->
 //generate and array of random jeepneys then through the array 
 // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
@@ -120,6 +122,38 @@ const shuffle = function shuffle(cardArray) {
     }
     return cardArray;
 }
+
+//------------User selects level of difficulty------>
+//used the swicth function the evaluate the users selection
+function setDifficulty(level) {
+    let numberOfPairs;
+    switch (level) {
+        case 'easy':
+            numberOfPairs = 6;
+            break;
+        case 'medium':
+            numberOfPairs = 9;
+            break;
+        case 'hard':
+            numberOfPairs = 12;
+            break;
+        default:
+            numberOfPairs = 12; // Default to hard if no match
+    }
+
+    currentCards = cardArray.slice(0, numberOfPairs);
+    currentCards = [...currentCards, ...currentCards]; // Duplicate cards for pairs
+    shuffle(currentCards);
+    drawCards();
+}
+
+//------------- Attach event listeners to difficulty buttons------>
+document.getElementById('easy').addEventListener('click', () => setDifficulty('easy'));
+document.getElementById('medium').addEventListener('click', () => setDifficulty('medium'));
+document.getElementById('difficult').addEventListener('click', () => setDifficulty('difficult'));
+
+// Initialize the game with the default medium
+setDifficulty('medium')
 //-------------MAKE THE GAME BOARD------------------->
 // Update the drawCards function to set imgBack source for each card
 function drawCards() {
@@ -254,8 +288,7 @@ document.getElementById('reset').addEventListener('click', function () {
     drawCards();
 });
 /*-------ice box items-----*/
-//celebrateWinner (when all pairs matched)
-//Easy option of only 4 pairs
-//Medium option of only 8 pairs)
+//Easy option of only 6 pairs
+//Medium option of only 9 pairs)
 //Hard option of all 12 pairs
 
