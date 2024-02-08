@@ -121,7 +121,6 @@ let selectedCards = [];
     // Update the drawCards function to set imgBack source for each card
 function drawCards() {
     gameBoard.innerHTML = '';
-    availableCards.innerHTML = counter;
     
     shuffle(currentCards).forEach((el, index) => {
         const card = document.createElement('div');
