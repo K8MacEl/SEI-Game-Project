@@ -3,86 +3,88 @@
     --section-color: rgba(241, 52, 42);
     --main-color: rgba(34, 68, 151);
   } */
-  
+
   * {
-    font-family: Arial;
+    font-family: 'Arial', sans-serif;
     cursor: pointer;
+    box-sizing: border-box;
   }
 
   body {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
-    padding: 2rem 2rem 3rem 4rem; 
-    background: linear-gradient(90deg, rgba(225,233,234,1) 0%, rgba(34,68,151,0.8337928921568627) 77%);
+    padding: 2rem 2rem 3rem 4rem;
+    background: linear-gradient(90deg, rgba(225, 233, 234, 1) 0%, rgba(34, 68, 151, 0.8337928921568627) 77%);
+    text-align: center;
   }
 
   .header {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    display: grid;
-    justify-content: space-between;
     margin-bottom: 1rem;
   }
 
   .title {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
     color: rgba(237, 212, 86);
-    font-family: Arial;
-    font-size: 6rem;
-    height: 200px;
-    width: 800px;
-    font-weight: 600;
-    line-height: 1.2;
-    background-color:  rgba(34, 68, 141);;
-    border: 20px outset rgba(241, 52, 42);
+    font-size: 3rem;
+    background-color: rgba(34, 68, 141);
+    border: 5px outset rgba(241, 52, 42);
+    padding: 10px;
+    word-wrap: break-word;
   }
-.slogan {
-  font-size: 2rem;
-}
 
-p {
+  .slogan {
+    font-size: 1.5rem;
+    margin: .05rem 0;
+  }
+
+  p {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     background-color: rgba(237, 212, 86, .8);
-    height: 12rem;
+    height: 13rem;
     width: 50rem;
     font-size: x-large;
     font-family: 'Gill Sans';
     border: 10px outset rgba(60, 50, 4, 0.8);
   }
-  .play{
-    font-size: large;
-    height: 10rem;
-    width: 70rem;
+
+  .play {
     text-align: center;
-    font-family: 'Gill Sans';
-    font-size: x-large;
-  }
-  
-  .pairs{
-    background-color: rgba(241, 52, 42);
-    cursor: pointer; 
-    width: 3rem;
-    height: 2rem;
-}
-  .game-info {
     margin-left: auto;
     margin-right: auto;
-    position: center;
-    display: grid;
-    grid-template-columns: (3, 1fr);
-    grid: 10px;
-    padding-left: 8rem;
+    text-align: center;
+    background-color: rgba(237, 212, 86, .8);
+    height: 15rem;
+    width: 50rem;
+    font-size: x-large;
+    font-family: 'Gill Sans';
+    border: 10px outset rgba(60, 50, 4, 0.8);
   }
-  
-  
-  #available-cards{
+
+  .pairs {
+    background-color: rgba(241, 52, 42);
+    cursor: pointer;
+    width: 3rem;
+    height: 2rem;
+  }
+
+  .game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+
+  #available-cards {
     display: hidden;
   }
 
@@ -92,15 +94,19 @@ p {
     border: 10px outset rgba(34, 68, 151);
     width: 10rem;
     height: 5rem;
-    font-size: x-large; 
+    font-size: x-large;
     grid-column: 1;
     grid-row: 1;
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    text-align: center; /* Center text for good measure */
+    display: flex;
+    /* Use flexbox for alignment */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    text-align: center;
+    /* Center text for good measure */
   }
-  
+
 
   #guesses-made {
     background-color: rgba(237, 212, 86);
@@ -110,10 +116,14 @@ p {
     font-size: x-large;
     grid-column: 2;
     grid-row: 1;
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    text-align: center; /* Center text for good measure */
+    display: flex;
+    /* Use flexbox for alignment */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    text-align: center;
+    /* Center text for good measure */
   }
 
 
@@ -126,95 +136,108 @@ p {
     height: 5rem;
     grid-column: 3;
     grid-row: 1;
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    text-align: center; /* Center text for good measure */
+    display: flex;
+    /* Use flexbox for alignment */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    text-align: center;
+    /* Center text for good measure */
   }
 
- 
+
   .card {
     /* do not change to absolute or all cards stack on top */
-    margin-left: center; 
+    margin-left: center;
     margin-right: center;
     padding: 1rem 1rem 3rem 2rem;
     display: grid;
     grid-template-columns: repeat(6, 10rem);
     grid-template-rows: repeat(4, 10rem);
     grid-gap: 1rem;
-    }
-  
-  .card-front, .card-back {
+  }
+
+  .card-front,
+  .card-back {
     position: relative;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
   }
-  
+
   .card-back {
     display: block;
   }
-  
+
   .card-front {
-    display: none; /*hide front image initaially*/
+    display: none;
+    /*hide front image initaially*/
   }
-  
-  
+
+
   .card.flipped .card-front {
-    display: block; /* Show the front image when flipped */
+    display: block;
+    /* Show the front image when flipped */
   }
-  
+
   .card.flipped .card-back {
-    display: none; /* Hide the back image when flipped */
-  }  
-  
+    display: none;
+    /* Hide the back image when flipped */
+  }
+
   img {
     backface-visibility: hidden;
   }
-  
-  .card:hover {
-    /* transform: rotateY(180deg); */
-  }
-  
+
   .hidden {
     display: none;
-  }  
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+  }
 
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
-}
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    /* Could be more or less, depending on screen size */
+  }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
 
-  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
