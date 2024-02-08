@@ -5,20 +5,16 @@
   }
   
   * {
-    box-sizing: inherit;
     font-family: Arial;
-    margin: 0;
-    scroll-behavior: auto;
     cursor: pointer;
   }
 
   body {
     margin-left: auto;
     margin-right: auto;
-    height: 100 vh;
-    overflow: scroll;
-    padding: 4rem 4rem 4rem 7rem;
-    background: linear-gradient(90deg, rgba(225,233,234,1) 0%, rgba(34,68,151,0.8337928921568627) 77%)
+    text-align: center;
+    padding: 2rem 2rem 3rem 4rem;
+    background: linear-gradient(90deg, rgba(225,233,234,1) 0%, rgba(34,68,151,0.8337928921568627) 77%);
   }
 
   .header {
@@ -41,13 +37,13 @@
     font-weight: 600;
     line-height: 1.2;
     background-color:  rgba(34, 68, 141);;
-    border: 20px solid rgba(241, 52, 42);
+    border: 20px outset rgba(241, 52, 42);
   }
 .slogan {
   font-size: 2rem;
 }
 
-  p {
+p {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -57,12 +53,15 @@
     width: 50rem;
     font-size: x-large;
     font-family: 'Gill Sans';
+    border: 10px outset rgba(60, 50, 4, 0.8);
   }
   .play{
     font-size: large;
     height: 10rem;
     width: 70rem;
     text-align: center;
+    font-family: 'Gill Sans';
+    font-size: x-large;
 
 
   }
@@ -107,6 +106,7 @@
     /* do not change to absolute or all cards stack on top */
     margin-left: center; 
     margin-right: center;
+    padding: 1rem 1rem 3rem 2rem;
     display: grid;
     grid-template-columns: repeat(6, 10rem);
     grid-template-rows: repeat(4, 10rem);
