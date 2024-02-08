@@ -115,9 +115,20 @@ p {
     font-size: x-large;
     width: 14rem;
     height: 4rem;
-    padding: 0.5rem 1rem 1rem 1rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
   }
+
+  .winner{
+    /* background-color: rgba(241, 52, 42);
+    border: 10px outset rgb(116, 16, 10);
+    font-size: x-large;
+    width: 14rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem; */
+  }
+  
  
   .card {
     /* do not change to absolute or all cards stack on top */
@@ -165,4 +176,5 @@ p {
   .hidden {
     display: none;
   }  
+
   

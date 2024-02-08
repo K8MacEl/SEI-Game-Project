@@ -1,6 +1,8 @@
 
 /*----- constants -----*/
 const cardArray = [
+
+   //format of array: jeep 1: identifer for jeep, imgFront: front of card to be flipped imgBack: same for all, back of card not flipped         
     {
         jeep: 'jeepney 1',
         imgFront: "images/Jeepney 1.png",
@@ -19,73 +21,71 @@ const cardArray = [
         imgBack: "images/Back of Cards.png"
     },
 
-    {
-        jeep: 'jeepney 4',
-        imgFront: "images/Jeepney 4.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 4',
+    //     imgFront: "images/Jeepney 4.png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 5',
-        imgFront: "images/Jeepney 5.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 5',
+    //     imgFront: "images/Jeepney 5.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
-    {
-        jeep: 'jeepney 6',
-        imgFront: "images/Jeepney 6.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 6',
+    //     imgFront: "images/Jeepney 6.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
-    {
-        jeep: 'jeepney 7',
-        imgFront: "images/Jeepney 7.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 7',
+    //     imgFront: "images/Jeepney 7.png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 8',
-        imgFront: "images/Jeepney 8.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 8',
+    //     imgFront: "images/Jeepney 8.png",
+    //     imgBack: "images/Back of Cards.png"
 
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 9',
-        imgFront: "images/Jeepney 9 .png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 9',
+    //     imgFront: "images/Jeepney 9 .png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 10',
-        imgFront: "images/Jeepney 10.png",
-        imgBack: "images/Back of Cards.png"
+    // {
+    //     jeep: 'jeepney 10',
+    //     imgFront: "images/Jeepney 10.png",
+    //     imgBack: "images/Back of Cards.png"
 
-    },
+    // },
 
-    {
-        jeep: 'jeepney 11',
-        imgFront: "images/Jeepney 11.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 11',
+    //     imgFront: "images/Jeepney 11.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
-    {
-        jeep: 'jeepney 12',
-        imgFront: "images/Jeepney 12.png",
-        imgBack: "images/Back of Cards.png"
-    },
+    // {
+    //     jeep: 'jeepney 12',
+    //     imgFront: "images/Jeepney 12.png",
+    //     imgBack: "images/Back of Cards.png"
+    // },
 
 ]
 //Set the game board with the array
 const gameBoard = document.querySelector('.card');
-//Event listener for game
+//Event listener for entire game
 gameBoard.addEventListener('click', handleClick);
-//pulls all cards on the gameBoard
-const cards = document.querySelectorAll('.card');
 //all unmatched cards
 const availableCards = document.querySelector('#available-cards');
 //shows avaialble cards in array
@@ -98,12 +98,16 @@ let cardsChosen = []
 let isChecking = false;
 //array to store current cards 
 let selectedCards = [];
+//varaible to track the number of matches and later function pushes to the DOM
+let matchedCount = 0;
+//varaible to track number of pairs guess and later function pushes to the DOM
+let guessCount = 0;
+
 //------------SHUFFLE CARDS IN ARRAY---------------->
 //generate and array of random jeepneys then through the array 
 // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
 const shuffle = function shuffle(cardArray) {
     let counter = cardArray.length, t, i;
-
     //while there remain elements to shuffle
     while (counter) {
         //pick a remaining element
@@ -116,7 +120,6 @@ const shuffle = function shuffle(cardArray) {
     }
     return cardArray;
 }
-
 //-------------MAKE THE GAME BOARD------------------->
 // Update the drawCards function to set imgBack source for each card
 function drawCards() {
@@ -125,18 +128,19 @@ function drawCards() {
     shuffle(currentCards).forEach((el, index) => {
         const card = document.createElement('div');
         card.classList.add('card');
-
+        //sets the front of card behind imgFront
         const imgFront = document.createElement('img');
         imgFront.src = el.imgFront;
         imgFront.alt = el.jeep;
         imgFront.classList.add('card-front');
-
+        //sets up back of card so the imgBack is on top at drawCards
         const imgBack = document.createElement('img');
         imgBack.src = el.imgBack;
         imgBack.classList.add('card-back');
 
         card.appendChild(imgBack);
         card.appendChild(imgFront);
+        //inserts and index so that its an invalid click if the user double selects the same card in a move
         card.dataset.id = index;
 
         gameBoard.appendChild(card);
@@ -171,14 +175,10 @@ function handleClick(event) {
         checkForMatch();
     }
 }
-
+//removes the imgBack to reveal the imgFront
 function flipCard(card) {
-    //console.log(card,"this is the card")
     card.classList.toggle('flipped');
 }
-//varaible to track the number of matches
-let matchedCount = 0;
-let guessCount = 0;
 
 function checkForMatch() {
     const [firstCard, secondCard] = selectedCards;
@@ -203,18 +203,16 @@ function checkForMatch() {
     if (matchedCount === cardArray.length) {
         console.log('All matches found! Game over!')
         //create message for winner
-        messageElement = document.createElement('div');
-        messageElement.textContent = 'Congratulations! You have matched all Jeepneys!'
+        let winnerElement = document.createElement('winner');
+        winnerElement.textContent = 'Congratulations! You have matched all Jeepneys!'
         //append message element to the DOM
-        document.body.appendChild(messageElement);
+        document.body.appendChild(winnerElement);
     }
     // Reset selectedCards and isChecking for the next turn
     selectedCards = [];
     isChecking = false;
-
-    
 }
-
+//updates the guesses-made on the DOM
 function updateGuessCount() {
     const guessesMadeElement = document.getElementById('guesses-made');
     guessesMadeElement.textContent = `Guesses made: ${guessCount}`;
@@ -231,12 +229,11 @@ function updateMatchedCount() {
 //----------RESET GAME--------------------.
 // Call the drawCards() function when the "Reset" button is clicked
 document.getElementById('reset').addEventListener('click', function () {
+    //resets the DOM so the matches made and guesses made boxes empty 
     guessCount = 0;
     matchedCount = 0;
-
     updateGuessCount();
     updateMatchedCount();
-    
     drawCards();
 });
 /*-------ice box items-----*/
@@ -244,5 +241,4 @@ document.getElementById('reset').addEventListener('click', function () {
 //Easy option of only 4 pairs
 //Medium option of only 8 pairs)
 //Hard option of all 12 pairs
-//timer
-//guess counter
+
