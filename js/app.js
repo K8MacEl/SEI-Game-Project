@@ -212,33 +212,35 @@ function checkForMatch() {
     selectedCards = [];
     isChecking = false;
 
-    function updateGuessCount() {
-        const guessesMadeElement = document.getElementById('guesses-made');
-        guessesMadeElement.textContent = `Guesses made: ${guessCount}`;
-        console.log(guessCount, "Guess count logged")
-    }
-
-    // Update the matched count on the DOM
-    function updateMatchedCount() {
-        const matchedCountElement = document.getElementById('matches-made');
-        matchedCountElement.textContent = `Matches made: ${matchedCount}`;
-        console.log(matchedCount, "This is matched count")
-    }
-
-
-
+    
 }
 
+function updateGuessCount() {
+    const guessesMadeElement = document.getElementById('guesses-made');
+    guessesMadeElement.textContent = `Guesses made: ${guessCount}`;
+    console.log(guessCount, "Guess count logged")
+}
 
-//celebrateWinner (when all pairs matched)
-
+// Update the matched count on the DOM
+function updateMatchedCount() {
+    const matchedCountElement = document.getElementById('matches-made');
+    matchedCountElement.textContent = `Matches made: ${matchedCount}`;
+    console.log(matchedCount, "This is matched count")
+}
 
 //----------RESET GAME--------------------.
 // Call the drawCards() function when the "Reset" button is clicked
 document.getElementById('reset').addEventListener('click', function () {
+    guessCount = 0;
+    matchedCount = 0;
+
+    updateGuessCount();
+    updateMatchedCount();
+    
     drawCards();
 });
 /*-------ice box items-----*/
+//celebrateWinner (when all pairs matched)
 //Easy option of only 4 pairs
 //Medium option of only 8 pairs)
 //Hard option of all 12 pairs
