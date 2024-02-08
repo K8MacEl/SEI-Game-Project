@@ -248,7 +248,7 @@ function checkForMatch() {
         //get the <span> element that closes the model
         let span = document.getElementsByClassName('close')[0];
 
-        //when the player clicks on <span> 9x), close the modal
+        //when the player clicks on <span> closes the modal
         span.onclick = function () {
             modal.style.display = 'none';
         }
