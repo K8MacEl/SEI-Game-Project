@@ -95,8 +95,6 @@
     width: 10rem;
     height: 5rem;
     font-size: x-large;
-    grid-column: 1;
-    grid-row: 1;
     display: flex;
     /* Use flexbox for alignment */
     justify-content: center;
@@ -114,8 +112,6 @@
     width: 10rem;
     height: 5rem;
     font-size: x-large;
-    grid-column: 2;
-    grid-row: 1;
     display: flex;
     /* Use flexbox for alignment */
     justify-content: center;
@@ -132,10 +128,8 @@
     border: 10px outset rgb(116, 16, 10);
     font-size: x-large;
     position: relative;
-    width: 10rem;
+    width: 15rem;
     height: 5rem;
-    grid-column: 3;
-    grid-row: 1;
     display: flex;
     /* Use flexbox for alignment */
     justify-content: center;
@@ -147,12 +141,11 @@
   }
 
 #level{
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   margin: 1rem 0;
-
+  flex-wrap: nowrap;
 }
 
 #easy {
@@ -162,8 +155,14 @@
   width: 15rem;
   height: 5rem;
   font-size: x-large;
-  grid-column: 2;
-  grid-row: 1;
+  display: flex;
+  /* Use flexbox for alignment */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  text-align: center;
+  /* Center text for good measure */
 }
 
 
@@ -173,8 +172,6 @@
   width: 15rem;
   height: 5rem;
   font-size: x-large;
-  grid-column: 2;
-  grid-row: 1;
   display: flex;
   /* Use flexbox for alignment */
   justify-content: center;
@@ -193,8 +190,6 @@
   position: relative;
   width: 15rem;
   height: 5rem;
-  grid-column: 3;
-  grid-row: 1;
   display: flex;
   /* Use flexbox for alignment */
   justify-content: center;

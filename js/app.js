@@ -134,11 +134,11 @@ function setDifficulty(level) {
         case 'medium':
             numberOfPairs = 9;
             break;
-        case 'hard':
+        case 'difficult':
             numberOfPairs = 12;
             break;
         default:
-            numberOfPairs = 12; // Default to hard if no match
+            numberOfPairs = 12; //default to medium if no selection and when page loads
     }
 
     currentCards = cardArray.slice(0, numberOfPairs);
@@ -233,8 +233,8 @@ function checkForMatch() {
             flipCard(secondCard.element);
         }, 500);
     }
-
-    if (matchedCount === cardArray.length) {
+//by adding the /2 at the end this enables the win module to appear when level is easy or medium as well as difficult
+    if (matchedCount === cardArray.length / 2) {
         console.log('All matches found! Game over!')
         //create message for winner
         //get modal from HTML
@@ -287,8 +287,5 @@ document.getElementById('reset').addEventListener('click', function () {
     updateMatchedCount();
     drawCards();
 });
-/*-------ice box items-----*/
-//Easy option of only 6 pairs
-//Medium option of only 9 pairs)
-//Hard option of all 12 pairs
+
 
