@@ -203,10 +203,27 @@ function checkForMatch() {
     if (matchedCount === cardArray.length) {
         console.log('All matches found! Game over!')
         //create message for winner
-        let winnerElement = document.createElement('winner');
-        winnerElement.textContent = 'Congratulations! You have matched all Jeepneys!'
-        //append message element to the DOM
-        document.body.appendChild(winnerElement);
+        //get modal from HTML
+        let modal = document.getElementById('winnerModal');
+        let message = document.getElementById("winnerMessage");
+        //set the winner message for modal
+        message.textContent = 'Congratulations! You have matched all Jeepneys!'
+        //display the modal message
+        modal.style.display = "block";
+
+        //get the <span> element that closes the model
+        let span = document.getElementsByClassName('close')[0];
+
+        //when the player clicks on <span> 9x), close the modal
+        span.onclick = function () {
+            modal.style.display = 'none';
+        }
+        //when the user clicks anywhere outside of modal close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
     }
     // Reset selectedCards and isChecking for the next turn
     selectedCards = [];
