@@ -77,14 +77,16 @@ p {
     margin-right: auto;
     position: center;
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
+    padding:  1rem 1rem 1rem 8rem;
+    grid-template-columns: repeat(3, 2fr);
   }
   
   #reset {
     background-color: rgba(241, 52, 42);
     border: 10px outset rgb(116, 16, 10);
     font-size: x-large;
-    width: 100px;
+    width: 9rem;
+    height: 8rem;
     padding: 0.5rem 1rem;
     margin-bottom: 5rem;
   }
@@ -98,7 +100,12 @@ p {
   }
 
   #available-cards{
-    
+    background-color: rgba(34, 68, 151);
+    color: white;
+    border: 10px outset rgba(34, 68, 151);
+    width: 10rem;
+    height: 5rem;
+    font-size: x-large;
     
   }
  
