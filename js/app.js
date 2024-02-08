@@ -184,6 +184,7 @@ function drawCards() {
         if (firstCard.name === secondCard.name) {
             console.log('Match!');
             matchedCount++;
+            updateMatchedCount()
             // Handle match (e.g., disable further clicks on these cards)
         } else {
             console.log('Not a match');
@@ -205,12 +206,14 @@ function drawCards() {
         // Reset selectedCards and isChecking for the next turn
         selectedCards = [];
         isChecking = false;
+
+        // Update the matched count on the DOM
+        function updateMatchedCount() {
+            const matchedCountElement = document.getElementById('matches-made');
+            matchedCountElement.textContent = `Matches made: ${matchedCount}`;
+            console.log(matchedCount, "This is matched count")
     }
 
-// Update the matched count on the DOM
-function updateMatchedCount() {
-    const matchedCountElement = document.getElementById('matches-made');
-    matchedCountElement.textContent = `${matchedCount}`;
 }
 
 

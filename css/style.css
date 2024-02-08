@@ -81,24 +81,7 @@ p {
     grid-template-columns: repeat(3, 2fr);
   }
   
-  #reset {
-    background-color: rgba(241, 52, 42);
-    border: 10px outset rgb(116, 16, 10);
-    font-size: x-large;
-    width: 9rem;
-    height: 9rem;
-    padding: 0.5rem 1rem;
-    margin-bottom: 5rem;
-  }
-
-  .matches-made {
-    /* background-color: rgba(237, 212, 86);
-    border: 10px outset rgba(237, 212, 86, .8);
-    width: 10rem;
-    height: 10rem;
-    font-size: x-large; */
-  }
-
+  
   #available-cards{
     background-color: rgba(34, 68, 151);
     color: white;
@@ -106,7 +89,31 @@ p {
     width: 10rem;
     height: 5rem;
     font-size: x-large;
-    
+  }
+  
+  #matches-made {
+    /* background-color: rgba(237, 212, 86);
+    border: 10px outset rgba(237, 212, 86, .8);
+    width: 10rem;
+    height: 10rem;
+    font-size: x-large; */
+  }
+  
+
+  #guesses-made {
+
+
+  }
+
+
+  #reset {
+    background-color: rgba(241, 52, 42);
+    border: 10px outset rgb(116, 16, 10);
+    font-size: x-large;
+    width: 14rem;
+    height: 4rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
   }
  
   .card {
