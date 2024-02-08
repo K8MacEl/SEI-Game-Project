@@ -14,5 +14,7 @@ An added feature to this game allows the user to select how many pairs they want
 
 Once the user had macthed all the cards a yellow box will appear congratulating the user on matching all the jeepneys. The user can either select the X or click anywhere on the window to close out of the yellow window.
 
-This history of the Jeepney....
+This history of the Jeepney:
+
+Jeepneys came to the Phillippines during WW2 and once the country was no longer
 
