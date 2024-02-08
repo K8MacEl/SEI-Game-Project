@@ -86,17 +86,17 @@ p {
     border: 10px outset rgb(116, 16, 10);
     font-size: x-large;
     width: 9rem;
-    height: 8rem;
+    height: 9rem;
     padding: 0.5rem 1rem;
     margin-bottom: 5rem;
   }
 
   .matches-made {
-    background-color: rgba(237, 212, 86);
+    /* background-color: rgba(237, 212, 86);
     border: 10px outset rgba(237, 212, 86, .8);
     width: 10rem;
-    height: 5rem;
-    font-size: x-large;
+    height: 10rem;
+    font-size: x-large; */
   }
 
   #available-cards{

@@ -207,6 +207,13 @@ function drawCards() {
         isChecking = false;
     }
 
+// Update the matched count on the DOM
+function updateMatchedCount() {
+    const matchedCountElement = document.getElementById('matches-made');
+    matchedCountElement.textContent = `${matchedCount}`;
+}
+
+
 //celebrateWinner (when all pairs matched)
 
 
