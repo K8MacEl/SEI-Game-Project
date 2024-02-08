@@ -16,5 +16,5 @@ Once the user had macthed all the cards a yellow box will appear congratulating 
 
 This history of the Jeepney:
 
-Jeepneys came to the Phillippines during WW2 and once the country was no longer
+Jeepneys came to the Phillippines during WW2 and once the country was no longer occupied Filipinos began modofiying and using Jeepneys as a means for publci
 
