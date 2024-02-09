@@ -105,24 +105,28 @@ const shuffle = function shuffle(cardArray) {
     }
     return cardArray;
 }
-//------------User selects level of difficulty------>
-//used the swicth function the evaluate the users selection
+//------------User selects level of difficulty using switch statement------>
+//explanation on switch statements found here https://youtu.be/2gE2K8i5tvs
 function setDifficulty(level) {
     let numberOfPairs;
     switch (level) {
         case 'easy':
             numberOfPairs = 6;
+            //if easy is selected "break" the swicth to stop running...
             break;
         case 'medium':
             numberOfPairs = 9;
+            //if medium is selected "break" the swicth to stop running...
             break;
         case 'difficult':
             numberOfPairs = 12;
+            //if difficult is selected "break" the swicth to stop running...
             break;
         default:
             numberOfPairs = 12; //default to medium if no selection and when page loads
+            //no break is needed here since its default
     }
-    currentCards = cardArray.slice(0, numberOfPairs);
+    currentCards = cardArray.slice(0, numberOfPairs); //slice array to adjust it based on the switch
     currentCards = [...currentCards, ...currentCards]; // Duplicate cards for pairs
     shuffle(currentCards);
     drawCards();
