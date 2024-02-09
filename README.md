@@ -72,10 +72,11 @@ Once the user selects two cards the checkForMatch function is triggered in which
 
 Once all matches have been made the modal feature in the HTML will be triggered to produce a pop up congratulating the winner. Span allows the user to select the X to close out of the pop up and additionally the window.onclick allows the user to click anywhere on the window, outside of the pop-up, to close the window.
 
-
 ### Reset Button
 
 Lastly, there is a reset button that triggered the drawCards function as well as resets the “Guess Count” and “Matches Made” count back to zero to allow the user to play again
 
 ### Next Steps and Future Enhancements (IceBox Items)
-A stopwatch timer to track the length of time to match the pairs and a log to track past performances of the time and number of guesses used are in the future enhancements. 
+* A stopwatch timer to track the length of time to match the pairs. 
+* Log to track past performances of the time and number of guesses used are in the future enhancements. 
+* CSS modified for mobile device usability.

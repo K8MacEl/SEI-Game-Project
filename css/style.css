@@ -1,8 +1,3 @@
-  /* .root{
-    --body-color:rgba(237, 212, 86);
-    --section-color: rgba(241, 52, 42);
-    --main-color: rgba(34, 68, 151);
-  } */
 
   * {
     font-family: 'Arial', sans-serif;
@@ -97,13 +92,9 @@
     height: 5rem;
     font-size: x-large;
     display: flex;
-    /* Use flexbox for alignment */
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     text-align: center;
-    /* Center text for good measure */
   }
 
 
@@ -114,13 +105,9 @@
     height: 5rem;
     font-size: x-large;
     display: flex;
-    /* Use flexbox for alignment */
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     text-align: center;
-    /* Center text for good measure */
   }
 
 
@@ -132,13 +119,9 @@
     width: 15rem;
     height: 5rem;
     display: flex;
-    /* Use flexbox for alignment */
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     text-align: center;
-    /* Center text for good measure */
   }
 
 #easy {
@@ -149,13 +132,9 @@
   height: 5rem;
   font-size: x-large;
   display: flex;
-  /* Use flexbox for alignment */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   text-align: center;
-  /* Center text for good measure */
 }
 
 
@@ -166,13 +145,9 @@
   height: 5rem;
   font-size: x-large;
   display: flex;
-  /* Use flexbox for alignment */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   text-align: center;
-  /* Center text for good measure */
 }
 
 
@@ -184,13 +159,9 @@
   width: 15rem;
   height: 5rem;
   display: flex;
-  /* Use flexbox for alignment */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   text-align: center;
-  /* Center text for good measure */
 }
   .card {
     /* do not change to absolute or all cards stack on top */
@@ -217,7 +188,6 @@
 
   .card-front {
     display: none;
-    /*hide front image initaially*/
   }
 
 
@@ -239,7 +209,6 @@
     display: none;
   }
 
-  /* The Modal (background) */
   .modal {
     display: none;
     /* Hidden by default */
