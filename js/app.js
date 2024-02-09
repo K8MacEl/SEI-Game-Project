@@ -256,7 +256,7 @@ function checkForMatch() {
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
-            }
+        }
         }
     }
     // Reset selectedCards and isChecking for the next turn
