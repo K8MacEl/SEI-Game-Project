@@ -77,6 +77,7 @@
 
   .game-info {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1rem;
@@ -140,14 +141,6 @@
     /* Center text for good measure */
   }
 
-#level{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-  flex-wrap: nowrap;
-}
-
 #easy {
   background-color: rgba(34, 68, 151);
   color: white;
@@ -203,7 +196,7 @@
     /* do not change to absolute or all cards stack on top */
     margin-left: center;
     margin-right: center;
-    padding: 1rem 1rem 3rem 2rem;
+    padding: 1rem 1rem 3rem 5rem;
     display: grid;
     grid-template-columns: repeat(6, 10rem);
     grid-template-rows: repeat(4, 10rem);
@@ -268,15 +261,12 @@
     /* Black w/ opacity */
   }
 
-  /* Modal Content */
+  /* modal-content */
   .modal-content {
-    background-color: #fefefe;
     margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
+    font-size: xx-large;    
     width: 50%;
-    /* Could be more or less, depending on screen size */
+
   }
 
   /* The Close Button */

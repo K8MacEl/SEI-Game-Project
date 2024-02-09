@@ -5,7 +5,9 @@ This is a fun play on the classic memory card game where the user will get to se
 
 <a href="https://imgur.com/JrCsl4n"><img src="https://i.imgur.com/JrCsl4nt.jpg" title="source: imgur.com" /></a>
 
-# To play: 
+# Getting Started
+
+To Play: 
 https://k8macel.github.io/SEI-Game-Project/
 
 ## Basic User Experience:
@@ -44,7 +46,7 @@ Jeepneys came to the Philippines during WW2 and once the country was no longer o
 
 ## The Coding Behind the Game:
 
-This game was created using HTML, CSS, and JavaScript with all of the logic of the game based in JavaScript. 
+Technologies used: CSS, HTML, and JavaScript.
 
 ### Card Array and Level of Difficulty
 
@@ -74,3 +76,6 @@ Once all matches have been made the modal feature in the HTML will be triggered 
 ### Reset Button
 
 Lastly, there is a reset button that triggered the drawCards function as well as resets the “Guess Count” and “Matches Made” count back to zero to allow the user to play again
+
+### Next Steps and Future Enhancements (IceBox Items)
+A stopwatch timer to track the length of time to match the pairs and a log to track past performances of the time and number of guesses used are in the future enhancements. 
