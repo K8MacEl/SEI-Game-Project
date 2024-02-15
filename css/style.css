@@ -87,7 +87,7 @@
   #matches-made {
     background-color: rgba(34, 68, 151);
     color: white;
-    border: 10px outset rgba(34, 68, 151);
+    border: 1rem outset rgba(34, 68, 151);
     width: 10rem;
     height: 5rem;
     font-size: x-large;
@@ -100,7 +100,7 @@
 
   #guesses-made {
     background-color: rgba(237, 212, 86);
-    border: 10px outset rgba(237, 212, 86, .8);
+    border: 1rem outset rgba(237, 212, 86, .8);
     width: 10rem;
     height: 5rem;
     font-size: x-large;
@@ -242,7 +242,7 @@
   .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 1rem;
     font-weight: bold;
   }
 
@@ -251,4 +251,11 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  @media only screen and (max-width: 600px) {
+    body {
+      height: 50pvh;
+      padding: 2rem 2rem 3rem 4rem;
+    }
   }
