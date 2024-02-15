@@ -76,7 +76,9 @@ Once all matches have been made the modal feature in the HTML will be triggered 
 
 Lastly, there is a reset button that triggered the drawCards function as well as resets the “Guess Count” and “Matches Made” count back to zero to allow the user to play again
 
+### Icebox Item Update:
+CSS modified for media use. 
+
 ### Next Steps and Future Enhancements (IceBox Items)
 * A stopwatch timer to track the length of time to match the pairs. 
 * Log to track past performances of the time and number of guesses used are in the future enhancements. 
-* CSS modified for mobile device usability.

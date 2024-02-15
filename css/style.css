@@ -255,7 +255,50 @@
 
   @media only screen and (max-width: 600px) {
     body {
-      height: 50pvh;
-      padding: 2rem 2rem 3rem 4rem;
+      padding: 1rem; /* Reduce padding for smaller screens */
+    }
+  
+    .title {
+      font-size: 2rem; /* Reduce title font size */
+      padding: 5px; /* Reduce padding */
+    }
+  
+    .slogan {
+      font-size: 1rem; /* Reduce slogan font size */
+    }
+  
+    p, .play {
+      width: auto; /* Set width to auto for better responsiveness */
+      height: auto; /* Adjust height as well */
+      font-size: large; /* Reduce font size */
+    }
+  
+    .pairs {
+      width: 2rem; /* Adjust width */
+      height: 1.5rem; /* Adjust height */
+    }
+  
+    .game-info {
+      flex-direction: column; /* Stack items vertically */
+      gap: 0.5rem; /* Reduce gap */
+    }
+  
+    #matches-made, #guesses-made, #reset, #easy, #medium, #difficult {
+      width: auto; /* Set width to auto */
+      height: auto; /* Adjust height */
+      font-size: large; /* Reduce font size */
+    }
+  
+    .card {
+      padding: 1rem; /* Adjust padding */
+      grid-template-columns: repeat(3, 8rem); /* Adjust grid for smaller screens */
+      grid-template-rows: repeat(8, 8rem);
+    }
+  
+    .modal-content {
+      width: 80%; /* Increase width percentage for better readability */
+      font-size: large; /* Adjust font size */
     }
   }
+  
+  
